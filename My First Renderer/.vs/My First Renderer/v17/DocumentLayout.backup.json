@@ -5,6 +5,26 @@
     {
       "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader_vertex.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:shader_vertex.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader_fragment.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:shader_fragment.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\Shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:Shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader_fragment.txt||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}",
+      "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:shader_fragment.txt||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +34,47 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "shader_fragment.txt",
+              "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader_fragment.txt",
+              "RelativeDocumentMoniker": "shader_fragment.txt",
+              "ToolTip": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader_fragment.txt",
+              "RelativeToolTip": "shader_fragment.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-10-11T08:16:40.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "shader_vertex.txt",
+              "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader_vertex.txt",
+              "RelativeDocumentMoniker": "shader_vertex.txt",
+              "ToolTip": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader_vertex.txt",
+              "RelativeToolTip": "shader_vertex.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-10-11T07:57:53.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "shader_fragment.txt",
+              "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader_fragment.txt",
+              "RelativeDocumentMoniker": "shader_fragment.txt",
+              "ToolTip": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader_fragment.txt",
+              "RelativeToolTip": "shader_fragment.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-10-11T07:55:49.509Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,9 +83,35 @@
               "RelativeDocumentMoniker": "window.cpp",
               "ToolTip": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\window.cpp",
               "RelativeToolTip": "window.cpp",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAC8AAAALAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADQAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-02T09:37:48.472Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "shader.cpp",
+              "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader.cpp",
+              "RelativeDocumentMoniker": "shader.cpp",
+              "ToolTip": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader.cpp",
+              "RelativeToolTip": "shader.cpp",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-11T07:35:45.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "shader.h",
+              "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader.h",
+              "RelativeDocumentMoniker": "shader.h",
+              "ToolTip": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader.h",
+              "RelativeToolTip": "shader.h",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB8AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-10-11T07:33:49.855Z",
               "EditorCaption": ""
             }
           ]
