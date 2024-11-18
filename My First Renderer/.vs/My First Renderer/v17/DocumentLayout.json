@@ -3,14 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\triangle1.obj||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:triangle1.obj||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
@@ -19,8 +11,16 @@
       "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:object.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:shader.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\object.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -34,11 +34,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "shader.vert",
               "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader.vert",
               "RelativeDocumentMoniker": "shader.vert",
@@ -51,39 +51,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "shader.frag",
               "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader.frag",
               "RelativeDocumentMoniker": "shader.frag",
               "ToolTip": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader.frag",
               "RelativeToolTip": "shader.frag",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2024-11-15T14:10:35.457Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "triangle1.obj",
               "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\triangle1.obj",
               "RelativeDocumentMoniker": "triangle1.obj",
               "ToolTip": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\triangle1.obj",
               "RelativeToolTip": "triangle1.obj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAALAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAGAAAAAAAAAA==",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQLSURBVDhPlVRLSKNXGL3/n8TEJCZGa6LGtxKrNT7widiICoJaBxWkSBG1G6sbF0LBld25qbZ14WZcjOBAK7RCDb6wPhjFWl1YX6hxiKDEmsb4SkxMTNJz/8RZdEiHHrgk/839zz3f\u002Bc4X8m9oNBrhxcWF1mazLWBZsX49Pj7OjImJEQSOBIfP5wt886O6ujpsfX1dd3d399vU1JRldHTUNTs7a76\u002Bvtavra0VlpWVSQJHg4IX\u002BCSNjY3yzs7OT7Ozszs3NjZ0S0tL0v39fT7IhCEhISrsR0GlBYotBoPhMfDae\u002BAIqTJKlp\u002Bf3wKSFzMzM2KUyV5dXZHb21sWSxgeHp6ak5PDRERE3FgsFvP5\u002BbmrpqZGVlBQIBYKhQxseuIIqWfDw8MFWVlZX4HsM71eL97b22MeH/0iXC4XsVqtjNPpFCQnJ2uKioocqamp\u002B9vb286RkZGi1tbWNLFYzMezFRd7KbNWIpF8Tz2an5\u002BX7OzsMF6vlyN7hkgkIlBCmpub7SkpKa/cbvdLh8MhkkqlP7AsG4dL9fD\u002B27q6ureM3W5fWFxczFtZWZEfHh6yeA7Q\u002BIFSCdSThoYGkpCQ4AkNDTVh2/T09MTDe\u002BnwVIRLTFC9sLW1NcBnGCb/8vJSajab3yOjoCXjd7K6ukoEAgH1PJ4uj8dDDg4OCKwg8FMNpdUVFRVOPqLzJi4urkStVitubm549/f3HJFcLifoKqeQkk5PT5OkpCTC4/G4C\u002BArd44C5HylUhmLpn3Ba29v/xON\u002BQTRiEL\u002BhOgsw\u002BfzSV5enrepqckG35w4KFpeXiZtbW10nyBKVBVHRs\u002BCzJeWlvaYnp7\u002BF1teXm6A9G8QmXmY6iwsLCR0wTNnRkbGa1TwHfdmAPCOPCeAAv6RqqoqF6J3gLPdPJjqReZuUd7fubm5TGJioiYzM9MNC0YnJyd/ROe9UNU0NzfHdRrVkLCwMEKtUalUpLKykgrYRWWvu7u79Xx6Cwy3y2SyP\u002BAFW1tb\u002B0D3JiYmfhobG9tVKBTKjo4OusUBz0Sr1XJjS5tCm/Pw8CBGtD5CyaJ3o0fHCRNwCaW7p6envw8MDBg2NzcdOPQxrPicKoyMjOQI0DyuOYgZMRqN1AIZSo/CuSsmwBcU9fX1DZiIX/r6\u002BrjOUsLn9Yz4\u002BHii0\u002Bk8LS0t92xg7z9BI9Tf30\u002BGhoZIV1cXV3IwvCs5GOCP/ezsbBeh3YiOjo5AZCJPTk54JhMdGELQPFJcXOzGX5sRFw9/kBDZvDs6OtpBTg2xsbEs5l6B6VChfB4aSUpKStylpaWH6PzP4\u002BPjrz5ISAHTfZh1GwiNmGsGc5uILiswOV4oO6VkaNrLnp4ef9r/D3p7e5XI7pew4poufP96cHBQ7f\u002BVkH8AGd8McJZ1\u002BjwAAAAASUVORK5CYII=",
               "WhenOpened": "2024-11-12T14:42:53.222Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "object.cpp",
               "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\object.cpp",
               "RelativeDocumentMoniker": "object.cpp",
               "ToolTip": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\object.cpp",
               "RelativeToolTip": "object.cpp",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAAAKYAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAAH8AAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-18T13:43:47.773Z",
               "EditorCaption": ""
@@ -98,12 +98,11 @@
               "RelativeToolTip": "object.h",
               "ViewState": "AgIAABUAAAAAAAAAAAAAABQAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-11-12T11:43:47.693Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-12T11:43:47.693Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "window.cpp",
               "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\window.cpp",
               "RelativeDocumentMoniker": "window.cpp",
