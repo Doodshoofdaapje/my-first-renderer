@@ -1,4 +1,3 @@
-﻿  shader.cpp
-  window.cpp
-  Generating Code...
+﻿  window.cpp
+C:\Users\20212692\Documents\Private\Projects\my-first-renderer\My First Renderer\window.cpp(94,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   My First Renderer.vcxproj -> C:\Users\20212692\Documents\Private\Projects\my-first-renderer\My First Renderer\x64\Debug\MyFirstRenderer.exe

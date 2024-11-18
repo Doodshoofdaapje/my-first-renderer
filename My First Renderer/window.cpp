@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "shader.h"
+#include "object.h"
 
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
@@ -10,26 +11,11 @@ const char* WINDOW_TITLE = "MyFirstRenderer";
 
 GLFWwindow* createWindow();
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void setupVertexData();
-void bindVertices(float vertices[], size_t size, unsigned int VAO);
+void setupObjects();
 void renderLoop(GLFWwindow* window, Shader& shader);
 void processInput(GLFWwindow* window);
 
-// Triangle 1
-float triangle1_vertices[] = {
- 0.5f,  0.5f, 0.0f,    0.0f, 0.0f, 1.0f,
--0.5f,  0.5f, 0.0f,    0.0f, 1.0f, 0.0f,
- 0.0f, -0.1f, 0.0f,   1.0f, 0.0f, 0.0f
-};
-
-// Triangle 2
-float triangle2_vertices[] = {
--0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,
- 0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,
- 0.0f,  0.1f, 0.0f,   1.0f, 0.0f, 0.0f,
-};
-
-unsigned int VAO[3];
+std::vector<Object> objects;
 
 int main()
 {
@@ -46,12 +32,14 @@ int main()
     glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     
-    // Setup vertices
-    setupVertexData();
-
     // Setup shaders
-    Shader myShader("shader_vertex.txt", "shader_fragment.txt");
-   
+    Shader myShader("shader.vert", "shader.frag");
+
+    // Setup objects
+    Object object("triangle1.obj");
+    objects.push_back(object);
+    setupObjects();
+
     // Start rendering
     renderLoop(window, myShader);
 
@@ -84,37 +72,11 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     glViewport(0, 0, width, height);
 }
 
-void setupVertexData() {
-    // Generate two VAOs and store them in the VAO array
-    glGenVertexArrays(3, VAO);
-
-    // Bind triangles
-    bindVertices(triangle1_vertices, sizeof(triangle1_vertices), VAO[0]);
-    bindVertices(triangle2_vertices, sizeof(triangle2_vertices), VAO[1]);
-    
-}
-
-void bindVertices(float vertices[], size_t size, unsigned int VAO) {
-    // Bind to array
-    glBindVertexArray(VAO);
-
-    // Object data
-    unsigned int VBO;
-    glGenBuffers(1, &VBO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
-
-    // Specify position attribute
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-
-    // Specify color attribute
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
-
-    // Unbind buffer and array
-    glBindVertexArray(0);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+void setupObjects() {
+    // Generate VAOs for each object in the scene
+    for (size_t i = 0; i < objects.size(); i++) {
+        objects[i].bind();
+    }
 }
 
 void renderLoop(GLFWwindow* window, Shader& shader) {
@@ -128,12 +90,15 @@ void renderLoop(GLFWwindow* window, Shader& shader) {
         glClear(GL_COLOR_BUFFER_BIT);
         
         // Use shader
+        bool textured = true;
+        float timeValue = glfwGetTime();
+        shader.setFloat("time", timeValue);
+        shader.setBool("textured", textured);
         shader.use();
 
         // Draw objects
-        for (int i = 0; i < sizeof(VAO) / sizeof(VAO[0]); i++) {
-            glBindVertexArray(VAO[i]);
-            glDrawArrays(GL_TRIANGLES, 0, 3);
+        for (size_t i = 0; i < objects.size(); i++) {
+            objects[i].draw();
         }
         
         // Check events
