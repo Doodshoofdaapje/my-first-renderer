@@ -30,14 +30,23 @@ int main()
 
     // Resize event handlr
     glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+    glEnable(GL_DEPTH_TEST);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     
     // Setup shaders
     Shader myShader("shader.vert", "shader.frag");
 
     // Setup objects
-    Object object("triangle1.obj");
+    Object object("triangle1.obj", true, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-55.0f, 45.0f, 0.0f), glm::vec3(1.0f));
+    Object object1("triangle1.obj", true, glm::vec3(2.0f, 2.4f, -6.0f), glm::vec3(-15.0f, 75.0f, 0.0f), glm::vec3(1.0f));
+    Object object2("triangle1.obj", true, glm::vec3(5.0f, 1.9f, -3.0f), glm::vec3(-55.0f, 25.0f, 0.0f), glm::vec3(1.0f));
+    Object object3("triangle1.obj", true, glm::vec3(-1.3f, 4.4f, -2.0f), glm::vec3(-35.0f, 6.0f, 0.0f), glm::vec3(1.0f));
+    Object object4("triangle1.obj", true, glm::vec3(-2.2f, 1.2f, -1.0f), glm::vec3(-25.0f, 15.0f, 0.0f), glm::vec3(1.0f));
     objects.push_back(object);
+    objects.push_back(object1);
+    objects.push_back(object2);
+    objects.push_back(object3);
+    objects.push_back(object4);
     setupObjects();
 
     // Start rendering
@@ -86,19 +95,18 @@ void renderLoop(GLFWwindow* window, Shader& shader) {
         processInput(window);
 
         // Background render
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
         
         // Use shader
-        bool textured = true;
+
         float timeValue = glfwGetTime();
         shader.setFloat("time", timeValue);
-        shader.setBool("textured", textured);
         shader.use();
 
         // Draw objects
         for (size_t i = 0; i < objects.size(); i++) {
-            objects[i].draw();
+            objects[i].draw(&shader);
         }
         
         // Check events

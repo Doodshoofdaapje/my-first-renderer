@@ -5,14 +5,16 @@ layout (location = 1) in vec2 aTexCoord;
 layout (location = 2) in vec3 aNormal;
 
 uniform float time;
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
 
 out vec2 TexCoord;
 out vec3 Normal;
 
 void main()
 {
-   float offset = sin(time);
-   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+   gl_Position = projection * view * model * vec4(aPos, 1.0);
    TexCoord = aTexCoord;
    Normal = aNormal;
 };

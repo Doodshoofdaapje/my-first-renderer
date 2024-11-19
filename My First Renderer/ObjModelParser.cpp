@@ -36,7 +36,8 @@ void ObjModelParser::parse(const char* objectPath) {
 }
 
 void ObjModelParser::parseLine(const std::string& str) {
-    std::vector<std::string> words = splitOn(str, " ");
+    std::string strCleaned = splitOn(str, " #")[0];
+    std::vector<std::string> words = splitOn(strCleaned, " ");
     if (words.empty()) {
         return;
     }

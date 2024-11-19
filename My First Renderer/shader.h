@@ -8,6 +8,9 @@
 #include <sstream>
 #include <iostream>
 
+#include <glm.hpp>
+#include <gtc/matrix_transform.hpp>
+#include <gtc/type_ptr.hpp>
 
 class Shader {
     public:
@@ -24,6 +27,7 @@ class Shader {
         void setBool(const std::string& name, bool value) const;
         void setInt(const std::string& name, int value) const;
         void setFloat(const std::string& name, float value) const;
+        void setMatrix4fv(const std::string& name, const glm::mat4& trans) const;
 
     private:
         // Helper methods for creating shaders

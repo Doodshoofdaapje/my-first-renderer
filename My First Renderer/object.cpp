@@ -1,6 +1,6 @@
 #include "object.h"
 
-Object::Object(const char* objectPath) {
+Object::Object(const char* objectPath, bool isTextured, const glm::vec3& pos, const glm::vec3& rot, const glm::vec3& scaler) {
     // Start Parsing
     std::string path(objectPath);
     std::string fileExtention = path.substr(path.find_last_of("."));
@@ -18,8 +18,10 @@ Object::Object(const char* objectPath) {
     vertexData = parser->getVertexData();
     indices = parser->getIndices();
 
-    x = 0.0f; y = 0.0f; z = 0.0f;
-    rotation = 0.0f;
+    position = pos;
+    rotation = rot;
+    textured = isTextured;
+    scale = scaler;
 
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &EBO);
@@ -62,7 +64,26 @@ void Object::bind() {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void Object::draw() {
+void Object::draw(Shader* shader) {
+    glm::mat4 model = glm::mat4(1.0f);
+    model = glm::rotate(model, glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f)); // Rotate around x
+    model = glm::rotate(model, glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f)); // Rotate around y
+    model = glm::rotate(model, glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotate around z
+    model = glm::translate(model, position);
+    model = glm::scale(model, scale);
+
+    glm::mat4 view = glm::mat4(1.0f);
+    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -6.0f));
+
+    glm::mat4 projection;
+    projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+
+    shader->setBool("textured", textured);
+    shader->setMatrix4fv("model", model);
+    shader->setMatrix4fv("view", view);
+    shader->setMatrix4fv("projection", projection);
+    shader->use();
+
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);

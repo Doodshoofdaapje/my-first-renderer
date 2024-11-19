@@ -72,7 +72,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\20212692\Documents\OpenGL\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\20212692\Documents\OpenGL\include;C:\Users\20212692\Documents\glm;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\20212692\Documents\OpenGL\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -156,6 +156,9 @@
   </ItemGroup>
   <ItemGroup>
     <Object Include="triangle1.obj">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </Object>
+    <Object Include="triangle2.obj">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </Object>
   </ItemGroup>

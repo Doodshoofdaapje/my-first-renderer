@@ -80,5 +80,8 @@
     <Object Include="triangle1.obj">
       <Filter>Resource Files\objects</Filter>
     </Object>
+    <Object Include="triangle2.obj">
+      <Filter>Resource Files\objects</Filter>
+    </Object>
   </ItemGroup>
 </Project>
