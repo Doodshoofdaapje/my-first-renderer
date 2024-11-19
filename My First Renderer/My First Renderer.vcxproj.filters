@@ -22,6 +22,9 @@
     <Filter Include="Resource Files\assets">
       <UniqueIdentifier>{1e72147d-fa6a-48df-9ef6-1efc8dd46b0d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Parsers">
+      <UniqueIdentifier>{924cc0a9-ec81-49a0-af6d-1625717beeb4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="window.cpp">
@@ -39,6 +42,9 @@
     <ClCompile Include="object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ObjModelParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.h">
@@ -49,6 +55,12 @@
     </ClInclude>
     <ClInclude Include="stb_image.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelFileParser.h">
+      <Filter>Header Files\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjModelParser.h">
+      <Filter>Header Files\Parsers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

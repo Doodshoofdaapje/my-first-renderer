@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\object.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:object.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\ObjModelParser.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:ObjModelParser.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\object.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:object.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\ObjModelParser.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:ObjModelParser.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\object.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:object.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\triangle1.obj||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -19,12 +23,8 @@
       "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:shader.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\object.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D0F98C7C-9739-4C1D-B5BD-2528175DEA50}|My First Renderer.vcxproj|solutionrelative:object.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,82 +34,85 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "shader.vert",
-              "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader.vert",
-              "RelativeDocumentMoniker": "shader.vert",
-              "ToolTip": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader.vert",
-              "RelativeToolTip": "shader.vert",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-11-15T14:16:03.445Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "shader.frag",
-              "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader.frag",
-              "RelativeDocumentMoniker": "shader.frag",
-              "ToolTip": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\shader.frag",
-              "RelativeToolTip": "shader.frag",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-11-15T14:10:35.457Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "triangle1.obj",
               "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\triangle1.obj",
               "RelativeDocumentMoniker": "triangle1.obj",
               "ToolTip": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\triangle1.obj",
               "RelativeToolTip": "triangle1.obj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAIAAAAAAAAAA==",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQLSURBVDhPlVRLSKNXGL3/n8TEJCZGa6LGtxKrNT7widiICoJaBxWkSBG1G6sbF0LBld25qbZ14WZcjOBAK7RCDb6wPhjFWl1YX6hxiKDEmsb4SkxMTNJz/8RZdEiHHrgk/839zz3f\u002Bc4X8m9oNBrhxcWF1mazLWBZsX49Pj7OjImJEQSOBIfP5wt886O6ujpsfX1dd3d399vU1JRldHTUNTs7a76\u002Bvtavra0VlpWVSQJHg4IX\u002BCSNjY3yzs7OT7Ozszs3NjZ0S0tL0v39fT7IhCEhISrsR0GlBYotBoPhMfDae\u002BAIqTJKlp\u002Bf3wKSFzMzM2KUyV5dXZHb21sWSxgeHp6ak5PDRERE3FgsFvP5\u002BbmrpqZGVlBQIBYKhQxseuIIqWfDw8MFWVlZX4HsM71eL97b22MeH/0iXC4XsVqtjNPpFCQnJ2uKioocqamp\u002B9vb286RkZGi1tbWNLFYzMezFRd7KbNWIpF8Tz2an5\u002BX7OzsMF6vlyN7hkgkIlBCmpub7SkpKa/cbvdLh8MhkkqlP7AsG4dL9fD\u002B27q6ureM3W5fWFxczFtZWZEfHh6yeA7Q\u002BIFSCdSThoYGkpCQ4AkNDTVh2/T09MTDe\u002BnwVIRLTFC9sLW1NcBnGCb/8vJSajab3yOjoCXjd7K6ukoEAgH1PJ4uj8dDDg4OCKwg8FMNpdUVFRVOPqLzJi4urkStVitubm549/f3HJFcLifoKqeQkk5PT5OkpCTC4/G4C\u002BArd44C5HylUhmLpn3Ba29v/xON\u002BQTRiEL\u002BhOgsw\u002BfzSV5enrepqckG35w4KFpeXiZtbW10nyBKVBVHRs\u002BCzJeWlvaYnp7\u002BF1teXm6A9G8QmXmY6iwsLCR0wTNnRkbGa1TwHfdmAPCOPCeAAv6RqqoqF6J3gLPdPJjqReZuUd7fubm5TGJioiYzM9MNC0YnJyd/ROe9UNU0NzfHdRrVkLCwMEKtUalUpLKykgrYRWWvu7u79Xx6Cwy3y2SyP\u002BAFW1tb\u002B0D3JiYmfhobG9tVKBTKjo4OusUBz0Sr1XJjS5tCm/Pw8CBGtD5CyaJ3o0fHCRNwCaW7p6envw8MDBg2NzcdOPQxrPicKoyMjOQI0DyuOYgZMRqN1AIZSo/CuSsmwBcU9fX1DZiIX/r6\u002BrjOUsLn9Yz4\u002BHii0\u002Bk8LS0t92xg7z9BI9Tf30\u002BGhoZIV1cXV3IwvCs5GOCP/ezsbBeh3YiOjo5AZCJPTk54JhMdGELQPFJcXOzGX5sRFw9/kBDZvDs6OtpBTg2xsbEs5l6B6VChfB4aSUpKStylpaWH6PzP4\u002BPjrz5ISAHTfZh1GwiNmGsGc5uILiswOV4oO6VkaNrLnp4ef9r/D3p7e5XI7pew4poufP96cHBQ7f\u002BVkH8AGd8McJZ1\u002BjwAAAAASUVORK5CYII=",
-              "WhenOpened": "2024-11-12T14:42:53.222Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "object.cpp",
-              "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\object.cpp",
-              "RelativeDocumentMoniker": "object.cpp",
-              "ToolTip": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\object.cpp",
-              "RelativeToolTip": "object.cpp",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAAAF8AAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-18T13:43:47.773Z",
+              "WhenOpened": "2024-11-19T12:14:11.925Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "ObjModelParser.h",
+              "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\ObjModelParser.h",
+              "RelativeDocumentMoniker": "ObjModelParser.h",
+              "ToolTip": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\ObjModelParser.h",
+              "RelativeToolTip": "ObjModelParser.h",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABcAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-19T08:49:52.455Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ObjModelParser.cpp",
+              "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\ObjModelParser.cpp",
+              "RelativeDocumentMoniker": "ObjModelParser.cpp",
+              "ToolTip": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\ObjModelParser.cpp",
+              "RelativeToolTip": "ObjModelParser.cpp",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAqwFkAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-19T09:08:54.695Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "object.h",
               "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\object.h",
               "RelativeDocumentMoniker": "object.h",
               "ToolTip": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\object.h",
               "RelativeToolTip": "object.h",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAAB4AAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-11-12T11:43:47.693Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
+              "Title": "object.cpp",
+              "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\object.cpp",
+              "RelativeDocumentMoniker": "object.cpp",
+              "ToolTip": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\object.cpp",
+              "RelativeToolTip": "object.cpp",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAFMAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-18T13:43:47.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "window.cpp",
               "DocumentMoniker": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\window.cpp",
               "RelativeDocumentMoniker": "window.cpp",
               "ToolTip": "C:\\Users\\20212692\\Documents\\Private\\Projects\\my-first-renderer\\My First Renderer\\window.cpp",
               "RelativeToolTip": "window.cpp",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAwwBoAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-02T09:37:48.472Z"
+              "WhenOpened": "2024-10-02T09:37:48.472Z",
+              "EditorCaption": ""
             }
           ]
         }
