@@ -19,16 +19,16 @@ class Object {
 
         void bind();
         void draw();
-        unsigned int getFaceCount();
 
     private:
         // Model data
         std::vector<std::vector<float>> vertices;
         std::vector<std::vector<float>> textureCoords;
         std::vector<std::vector<float>> vertexNormals;
-        std::vector<std::vector<float>> faces;
+        std::vector<float> vertexData;
+        std::vector<int> indices;
 
-        std::vector<unsigned int> VAO;
+        unsigned int VAO, EBO;
 
         float x, y, z;
         float rotation;

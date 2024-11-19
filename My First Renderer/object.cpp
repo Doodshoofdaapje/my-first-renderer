@@ -4,7 +4,7 @@ Object::Object(const char* objectPath) {
     vertices = {};
     textureCoords = {};
     vertexNormals = {};
-    faces = {};
+    vertexData = {};
 
     x = 0.0f; y = 0.0f; z = 0.0f;
     rotation = 0.0f;
@@ -28,8 +28,8 @@ Object::Object(const char* objectPath) {
         std::cout << "ERROR::OBJECT::FILE_NOT_SUCCESFULLY_READ" << std::endl;
 	}
 
-    VAO.resize(faces.size());
-    glGenVertexArrays(static_cast<GLsizei>(VAO.size()), VAO.data());
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &EBO);
 }
 
 void Object::parseLine(const std::string& str) {
@@ -58,19 +58,19 @@ void Object::parseLine(const std::string& str) {
         vertexNormals.push_back(parseVector(3));
 
     } else if (keyWord == "f") {
-        std::vector<float> face = {};
         for (size_t i = 1; i < words.size(); ++i) {
-            std::vector<std::string> indices = splitOn(words[i], "/");
+            std::vector<std::string> faceIndices = splitOn(words[i], "/");
 
-            int vertexIndex = std::stoi(indices[0]) - 1;
-            int textureIndex = std::stoi(indices[1]) - 1;
-            int normalIndex = std::stoi(indices[2]) - 1;
+            int vertexIndex = std::stoi(faceIndices[0]) - 1;
+            int textureIndex = std::stoi(faceIndices[1]) - 1;
+            int normalIndex = std::stoi(faceIndices[2]) - 1;
 
-            face.insert(face.end(), vertices[vertexIndex].begin(), vertices[vertexIndex].end());
-            face.insert(face.end(), textureCoords[textureIndex].begin(), textureCoords[textureIndex].end());
-            face.insert(face.end(), vertexNormals[normalIndex].begin(), vertexNormals[normalIndex].end());
+            vertexData.insert(vertexData.end(), vertices[vertexIndex].begin(), vertices[vertexIndex].end());
+            vertexData.insert(vertexData.end(), textureCoords[textureIndex].begin(), textureCoords[textureIndex].end());
+            vertexData.insert(vertexData.end(), vertexNormals[normalIndex].begin(), vertexNormals[normalIndex].end());
+
+            indices.push_back(vertexIndex);
         }
-        faces.push_back(face);
     }
 }
 
@@ -92,19 +92,13 @@ std::vector<std::string> Object::splitOn(const std::string& str, const std::stri
     return substrings;
 }
 
-unsigned int Object::getFaceCount() {
-    return faces.size();
-}
-
 void Object::bind() {
-    for (size_t i = 0; i < faces.size(); i++) {
-        bindFace(VAO[i], faces[i]);
+    for (size_t i = 0; i < indices.size(); i++) {
+        std::cout << indices[i] << std::endl;
     }
-}
 
-void Object::bindFace(unsigned int FaceVAO, const std::vector<float>& face) {
     // Bind to array
-    glBindVertexArray(FaceVAO);
+    glBindVertexArray(VAO);
 
     // Setup texture
     int texture = createTexture("doghuhwhat.jpeg");
@@ -114,7 +108,11 @@ void Object::bindFace(unsigned int FaceVAO, const std::vector<float>& face) {
     unsigned int VBO;
     glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, face.size() * sizeof(float), face.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, vertexData.size() * sizeof(float), vertexData.data(), GL_STATIC_DRAW);
+
+    // EBO for efficient memory
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(int), indices.data(), GL_STATIC_DRAW);
 
     // Specify position attribute
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
@@ -134,10 +132,9 @@ void Object::bindFace(unsigned int FaceVAO, const std::vector<float>& face) {
 }
 
 void Object::draw() {
-    for (size_t i = 0; i < VAO.size(); i++) {
-        glBindVertexArray(VAO[i]);
-        glDrawArrays(GL_TRIANGLES, 0, faces[i].size() / 8);
-    }
+    glBindVertexArray(VAO);
+    glDrawElements(GL_TRIANGLES, vertexData.size() / 8, GL_UNSIGNED_INT, 0);
+    glBindVertexArray(0);
 }
 
 int Object::createTexture(const char* filepath) {
