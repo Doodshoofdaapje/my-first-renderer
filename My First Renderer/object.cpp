@@ -1,6 +1,6 @@
 #include "object.h"
 
-Object::Object(const char* objectPath, bool isTextured, const glm::vec3& pos, const glm::vec3& rot, const glm::vec3& scaler) {
+Object::Object(const char* objectPath, bool isTextured, const Transform& trans) {
     // Start Parsing
     std::string path(objectPath);
     std::string fileExtention = path.substr(path.find_last_of("."));
@@ -18,10 +18,8 @@ Object::Object(const char* objectPath, bool isTextured, const glm::vec3& pos, co
     vertexData = parser->getVertexData();
     indices = parser->getIndices();
 
-    position = pos;
-    rotation = rot;
+    transform = trans;
     textured = isTextured;
-    scale = scaler;
 
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &EBO);
@@ -66,22 +64,14 @@ void Object::bind() {
 
 void Object::draw(Shader* shader) {
     glm::mat4 model = glm::mat4(1.0f);
-    model = glm::rotate(model, glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f)); // Rotate around x
-    model = glm::rotate(model, glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f)); // Rotate around y
-    model = glm::rotate(model, glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotate around z
-    model = glm::translate(model, position);
-    model = glm::scale(model, scale);
-
-    glm::mat4 view = glm::mat4(1.0f);
-    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -6.0f));
-
-    glm::mat4 projection;
-    projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+    model = glm::rotate(model, glm::radians(transform.rotation.x), glm::vec3(1.0f, 0.0f, 0.0f)); // Rotate around x
+    model = glm::rotate(model, glm::radians(transform.rotation.y), glm::vec3(0.0f, 1.0f, 0.0f)); // Rotate around y
+    model = glm::rotate(model, glm::radians(transform.rotation.z), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotate around z
+    model = glm::translate(model, transform.position);
+    model = glm::scale(model, transform.scale);
 
     shader->setBool("textured", textured);
     shader->setMatrix4fv("model", model);
-    shader->setMatrix4fv("view", view);
-    shader->setMatrix4fv("projection", projection);
     shader->use();
 
     glBindVertexArray(VAO);

@@ -4,6 +4,7 @@
 
 #include "shader.h"
 #include "object.h"
+#include "camera.h"
 
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
@@ -12,7 +13,7 @@ const char* WINDOW_TITLE = "MyFirstRenderer";
 GLFWwindow* createWindow();
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void setupObjects();
-void renderLoop(GLFWwindow* window, Shader& shader);
+void renderLoop(GLFWwindow* window, Shader& shader, Camera& camera);
 void processInput(GLFWwindow* window);
 
 std::vector<Object> objects;
@@ -36,13 +37,16 @@ int main()
     // Setup shaders
     Shader myShader("shader.vert", "shader.frag");
 
+    // Setup Camera
+    Camera camera(Transform{ glm::vec3(0.0f, 0.0f, -6.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f) }, glm::vec3(0.0f, 0.0f, 0.0f));
+
     // Setup objects
-    Object object("triangle1.obj", true, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-55.0f, 45.0f, 0.0f), glm::vec3(1.0f));
-    Object object1("triangle1.obj", true, glm::vec3(2.0f, 2.4f, -6.0f), glm::vec3(-15.0f, 75.0f, 0.0f), glm::vec3(1.0f));
-    Object object2("triangle1.obj", true, glm::vec3(5.0f, 1.9f, -3.0f), glm::vec3(-55.0f, 25.0f, 0.0f), glm::vec3(1.0f));
-    Object object3("triangle1.obj", true, glm::vec3(-1.3f, 4.4f, -2.0f), glm::vec3(-35.0f, 6.0f, 0.0f), glm::vec3(1.0f));
-    Object object4("triangle1.obj", true, glm::vec3(-2.2f, 1.2f, -1.0f), glm::vec3(-25.0f, 15.0f, 0.0f), glm::vec3(1.0f));
-    objects.push_back(object);
+    Object object0("triangle1.obj", true, Transform{ glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-55.0f, 45.0f, 0.0f), glm::vec3(1.0f)});
+    Object object1("triangle1.obj", true, Transform{ glm::vec3(2.0f, 2.4f, -6.0f), glm::vec3(-15.0f, 75.0f, 0.0f), glm::vec3(1.0f) });
+    Object object2("triangle1.obj", true, Transform{ glm::vec3(5.0f, 1.9f, -3.0f), glm::vec3(-55.0f, 25.0f, 0.0f), glm::vec3(1.0f) });
+    Object object3("triangle1.obj", true, Transform{ glm::vec3(-1.3f, 4.4f, -2.0f), glm::vec3(-35.0f, 6.0f, 0.0f), glm::vec3(1.0f) });
+    Object object4("triangle1.obj", true, Transform{ glm::vec3(-2.2f, 1.2f, -1.0f), glm::vec3(-25.0f, 15.0f, 0.0f), glm::vec3(1.0f) });
+    objects.push_back(object0);
     objects.push_back(object1);
     objects.push_back(object2);
     objects.push_back(object3);
@@ -50,7 +54,7 @@ int main()
     setupObjects();
 
     // Start rendering
-    renderLoop(window, myShader);
+    renderLoop(window, myShader, camera);
 
     // Release all resource allocations
     glfwTerminate();
@@ -88,7 +92,7 @@ void setupObjects() {
     }
 }
 
-void renderLoop(GLFWwindow* window, Shader& shader) {
+void renderLoop(GLFWwindow* window, Shader& shader, Camera& camera) {
     while (!glfwWindowShouldClose(window))
     {
         // Input
@@ -99,8 +103,9 @@ void renderLoop(GLFWwindow* window, Shader& shader) {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         
         // Use shader
-
         float timeValue = glfwGetTime();
+        shader.setMatrix4fv("view", camera.getViewMatrix());
+        shader.setMatrix4fv("projection", camera.getProjectionMatrix());
         shader.setFloat("time", timeValue);
         shader.use();
 

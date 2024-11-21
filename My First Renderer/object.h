@@ -17,10 +17,11 @@
 #include "ModelFileParser.h"
 #include "ObjModelParser.h"
 #include "shader.h"
+#include "Transform.h"
 
 class Object {
     public:
-        Object(const char* objectPath, bool isTextured, const glm::vec3& pos, const glm::vec3& rot, const glm::vec3& scale);
+        Object(const char* objectPath, bool isTextured, const Transform& trans);
 
         void bind();
         void draw(Shader* shader);
@@ -35,9 +36,7 @@ class Object {
         unsigned int VAO, EBO;
 
         // Properties
-        glm::vec3 position;
-        glm::vec3 rotation;
-        glm::vec3 scale;
+        Transform transform; 
         bool textured;
 
         // Auxilaury methods
