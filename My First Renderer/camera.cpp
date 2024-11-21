@@ -4,15 +4,18 @@ Camera::Camera(const Transform& trans, const glm::vec3& target) {
 	transform = trans;
 
 	glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
-	camDirection = trans.position - target;
+	camDirection = glm::normalize(trans.position - target);
 	cameraRight = glm::normalize(glm::cross(up, camDirection));
 	cameraUp = glm::cross(camDirection, cameraRight);
 }
 
 glm::mat4 Camera::getViewMatrix() {
+	// Temp
+	const float radius = 10.0f;
+	transform.position.x = sin(glfwGetTime()) * radius;
+	transform.position.z = cos(glfwGetTime()) * radius;
+
 	glm::mat4 view = glm::lookAt(transform.position, camDirection, cameraUp);
-	view = glm::mat4(1.0f);
-	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -6.0f));
 	return view;
 }
 
