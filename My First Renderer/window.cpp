@@ -13,10 +13,13 @@ const char* WINDOW_TITLE = "MyFirstRenderer";
 GLFWwindow* createWindow();
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void setupObjects();
-void renderLoop(GLFWwindow* window, Shader& shader, Camera& camera);
+void renderLoop(GLFWwindow* window, Shader& shader);
 void processInput(GLFWwindow* window);
 
+float deltaTime = 0.0f;	// Time between current frame and last frame
+float lastFrame = 0.0f; // Time of last frame
 std::vector<Object> objects;
+Camera camera;
 
 int main()
 {
@@ -38,14 +41,16 @@ int main()
     Shader myShader("shader.vert", "shader.frag");
 
     // Setup Camera
-    Camera camera(Transform{ glm::vec3(0.0f, 0.0f, -6.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f) }, glm::vec3(0.0f, 0.0f, 0.0f));
+    camera = Camera(Transform{ glm::vec3(0.0f, 0.0f, 6.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f) }, glm::vec3(0.0f, 0.0f, 0.0f));
 
     // Setup objects
+    Object origin("triangle1.obj", false, Transform{ glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f) });
     Object object0("triangle1.obj", true, Transform{ glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-55.0f, 45.0f, 0.0f), glm::vec3(1.0f)});
     Object object1("triangle1.obj", true, Transform{ glm::vec3(2.0f, 2.4f, -6.0f), glm::vec3(-15.0f, 75.0f, 0.0f), glm::vec3(1.0f) });
     Object object2("triangle1.obj", true, Transform{ glm::vec3(5.0f, 1.9f, -3.0f), glm::vec3(-55.0f, 25.0f, 0.0f), glm::vec3(1.0f) });
     Object object3("triangle1.obj", true, Transform{ glm::vec3(-1.3f, 4.4f, -2.0f), glm::vec3(-35.0f, 6.0f, 0.0f), glm::vec3(1.0f) });
     Object object4("triangle1.obj", true, Transform{ glm::vec3(-2.2f, 1.2f, -1.0f), glm::vec3(-25.0f, 15.0f, 0.0f), glm::vec3(1.0f) });
+    objects.push_back(origin);
     objects.push_back(object0);
     objects.push_back(object1);
     objects.push_back(object2);
@@ -54,7 +59,7 @@ int main()
     setupObjects();
 
     // Start rendering
-    renderLoop(window, myShader, camera);
+    renderLoop(window, myShader);
 
     // Release all resource allocations
     glfwTerminate();
@@ -92,9 +97,13 @@ void setupObjects() {
     }
 }
 
-void renderLoop(GLFWwindow* window, Shader& shader, Camera& camera) {
+void renderLoop(GLFWwindow* window, Shader& shader) {
     while (!glfwWindowShouldClose(window))
     {
+        float currentFrame = glfwGetTime();
+        deltaTime = currentFrame - lastFrame;
+        lastFrame = currentFrame;
+
         // Input
         processInput(window);
 
@@ -103,10 +112,9 @@ void renderLoop(GLFWwindow* window, Shader& shader, Camera& camera) {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         
         // Use shader
-        float timeValue = glfwGetTime();
         shader.setMatrix4fv("view", camera.getViewMatrix());
         shader.setMatrix4fv("projection", camera.getProjectionMatrix());
-        shader.setFloat("time", timeValue);
+        shader.setFloat("time", currentFrame);
         shader.use();
 
         // Draw objects
@@ -123,6 +131,15 @@ void renderLoop(GLFWwindow* window, Shader& shader, Camera& camera) {
 
 void processInput(GLFWwindow* window)
 {
+
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+        camera.move(1.0f, 0.0f, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+        camera.move(-1.0f, 0.0f, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+        camera.move(0.0f, 1.0f, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+        camera.move(0.0f, -1.0f, deltaTime);
 }

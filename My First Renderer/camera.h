@@ -17,10 +17,13 @@
 
 class Camera {
 	public:
+		Camera();
 		Camera(const Transform& trans, const glm::vec3& target);
 
 		glm::mat4 getViewMatrix();
 		glm::mat4 getProjectionMatrix();
+
+		void move(float forwardDisplacement, float sidewaysDisplacement, float deltaTime);
 
 	private:
 		Transform transform;

@@ -1,3 +1,5 @@
 *.vsidx
 *.opendb
 *.ipch
+.vs/
+MyFirstRenderer/.vs
