@@ -21,7 +21,7 @@
 
 class Object {
     public:
-        Object(const char* objectPath, bool isTextured, const Transform& trans);
+        Object(const char* objectPath, const char* texturePath, bool isTextured, const Transform& trans);
 
         void bind();
         void draw(Shader* shader);
@@ -34,13 +34,14 @@ class Object {
 
         // OpenGl Objects
         unsigned int VAO, EBO;
+        const char* texturePath;
 
         // Properties
         Transform transform; 
         bool textured;
 
         // Auxilaury methods
-        int createTexture(const char* filepath);
+        int createTexture();
 };
 
 #endif

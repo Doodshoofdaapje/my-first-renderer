@@ -41,15 +41,15 @@ int main()
     Shader myShader("shader.vert", "shader.frag");
 
     // Setup Camera
-    camera = Camera(Transform{ glm::vec3(0.0f, 0.0f, 6.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f) }, glm::vec3(0.0f, 0.0f, 0.0f));
+    camera = Camera(Transform{ glm::vec3(0.0f, 0.0f, 6.0f), glm::vec3(0.0f, -90.0f, 0.0f), glm::vec3(1.0f) }, glm::vec3(0.0f, 0.0f, 0.0f));
 
     // Setup objects
-    Object origin("triangle1.obj", false, Transform{ glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f) });
-    Object object0("triangle1.obj", true, Transform{ glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-55.0f, 45.0f, 0.0f), glm::vec3(1.0f)});
-    Object object1("triangle1.obj", true, Transform{ glm::vec3(2.0f, 2.4f, -6.0f), glm::vec3(-15.0f, 75.0f, 0.0f), glm::vec3(1.0f) });
-    Object object2("triangle1.obj", true, Transform{ glm::vec3(5.0f, 1.9f, -3.0f), glm::vec3(-55.0f, 25.0f, 0.0f), glm::vec3(1.0f) });
-    Object object3("triangle1.obj", true, Transform{ glm::vec3(-1.3f, 4.4f, -2.0f), glm::vec3(-35.0f, 6.0f, 0.0f), glm::vec3(1.0f) });
-    Object object4("triangle1.obj", true, Transform{ glm::vec3(-2.2f, 1.2f, -1.0f), glm::vec3(-25.0f, 15.0f, 0.0f), glm::vec3(1.0f) });
+    Object origin("triangle1.obj", "doghuhwhat.jpeg", false, Transform{glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f)});
+    Object object0("triangle1.obj", "doghuhwhat.jpeg", true, Transform{ glm::vec3(-6.0f, 0.0f, 0.0f), glm::vec3(-55.0f, 45.0f, 0.0f), glm::vec3(1.0f)});
+    Object object1("triangle1.obj", "doghuhwhat.jpeg", true, Transform{ glm::vec3(2.0f, 2.4f, -6.0f), glm::vec3(-15.0f, 75.0f, 0.0f), glm::vec3(1.0f) });
+    Object object2("triangle1.obj", "doghuhwhat.jpeg", true, Transform{ glm::vec3(5.0f, 1.9f, -3.0f), glm::vec3(-55.0f, 25.0f, 0.0f), glm::vec3(1.0f) });
+    Object object3("triangle1.obj", "doghuhwhat.jpeg", true, Transform{ glm::vec3(-1.3f, 4.4f, -2.0f), glm::vec3(-35.0f, 6.0f, 0.0f), glm::vec3(1.0f) });
+    Object object4("triangle1.obj", "doghuhwhat.jpeg", true, Transform{ glm::vec3(-2.2f, 1.2f, -1.0f), glm::vec3(-25.0f, 15.0f, 0.0f), glm::vec3(1.0f) });
     objects.push_back(origin);
     objects.push_back(object0);
     objects.push_back(object1);
@@ -104,6 +104,8 @@ void renderLoop(GLFWwindow* window, Shader& shader) {
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
 
+        //std::cout << "Frames Per Second (FPS) " << 1 / deltaTime << std::endl;
+
         // Input
         processInput(window);
 
@@ -134,12 +136,24 @@ void processInput(GLFWwindow* window)
 
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+
+    // Movement
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         camera.move(1.0f, 0.0f, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
         camera.move(-1.0f, 0.0f, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        camera.move(0.0f, 1.0f, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         camera.move(0.0f, -1.0f, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+        camera.move(0.0f, 1.0f, deltaTime);
+
+    // Rotation
+    if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+        camera.rotate(1.0f, 0.0f, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+        camera.rotate(-1.0f, 0.0f, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+        camera.rotate(0.0f, -1.0f, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+        camera.rotate(0.0f, 1.0f, deltaTime);
 }

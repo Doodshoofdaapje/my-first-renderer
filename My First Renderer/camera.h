@@ -24,6 +24,7 @@ class Camera {
 		glm::mat4 getProjectionMatrix();
 
 		void move(float forwardDisplacement, float sidewaysDisplacement, float deltaTime);
+		void rotate(float forwardRotation, float sidewaysRotation, float deltaTime);
 
 	private:
 		Transform transform;

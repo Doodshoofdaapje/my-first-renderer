@@ -1,7 +1,8 @@
 #include "object.h"
 
-Object::Object(const char* objectPath, bool isTextured, const Transform& trans) {
-    // Start Parsing
+Object::Object(const char* objectPath, const char* texturePath, bool isTextured, const Transform& trans) {
+    // File management
+    this->texturePath = texturePath;
     std::string path(objectPath);
     std::string fileExtention = path.substr(path.find_last_of("."));
 
@@ -32,7 +33,7 @@ void Object::bind() {
     glBindVertexArray(VAO);
 
     // Setup texture
-    int texture = createTexture("doghuhwhat.jpeg");
+    int texture = createTexture();
     glBindTexture(GL_TEXTURE_2D, texture);
 
     // Object data
@@ -79,7 +80,7 @@ void Object::draw(Shader* shader) {
     glBindVertexArray(0);
 }
 
-int Object::createTexture(const char* filepath) {
+int Object::createTexture() {
     // Setup texture
     unsigned int texture;
     glGenTextures(1, &texture);
@@ -93,7 +94,7 @@ int Object::createTexture(const char* filepath) {
 
     // Load and generate the texture
     int width, height, nrChannels;
-    unsigned char* data = stbi_load(filepath, &width, &height, &nrChannels, 0);
+    unsigned char* data = stbi_load(texturePath, &width, &height, &nrChannels, 0);
     if (data) {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);

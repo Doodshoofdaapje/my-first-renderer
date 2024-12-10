@@ -31,8 +31,23 @@ glm::mat4 Camera::getProjectionMatrix() {
 void Camera::move(float forwardDisplacement, float sidewaysDisplacement, float deltaTime) {
 	float cameraSpeed = 10 * deltaTime;
 
-	std::cout << cameraRight.x << cameraRight.y << cameraRight.z << std::endl;
-	std::cout << transform.position.x << ", " << transform.position.y << ", " << transform.position.z << std::endl;
 	transform.position += forwardDisplacement * camDirection * cameraSpeed;
-	transform.position += sidewaysDisplacement * cameraRight * cameraSpeed;
+	transform.position -= sidewaysDisplacement * cameraRight * cameraSpeed;
+}
+
+void Camera::rotate(float forwardRotation, float sidewaysRotation, float deltaTime) {
+	float rotationSpeed = 100 * deltaTime;
+	glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+	glm::vec3 direction;
+
+	transform.rotation.x += forwardRotation * rotationSpeed;
+	transform.rotation.y += sidewaysRotation * rotationSpeed;
+
+	// Recalculate camera properties
+	direction.x = cos(glm::radians(transform.rotation.y)) * cos(glm::radians(transform.rotation.x));
+	direction.y = sin(glm::radians(transform.rotation.x));
+	direction.z = sin(glm::radians(transform.rotation.y)) * cos(glm::radians(transform.rotation.x));
+	camDirection = glm::normalize(direction);
+	cameraRight = glm::normalize(glm::cross(up, camDirection));
+	cameraUp = glm::cross(camDirection, cameraRight);
 }
