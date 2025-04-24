@@ -10,6 +10,7 @@ class ModelFileParser {
         virtual void parse(const char* objectPath) = 0;
         virtual std::vector<float> getVertexData() = 0;
         virtual std::vector<int> getIndices() = 0;
+        virtual int getTextureSize() = 0;
 };
 
 

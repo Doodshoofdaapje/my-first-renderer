@@ -72,8 +72,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\20212692\Documents\OpenGL\include;C:\Users\20212692\Documents\glm;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\20212692\Documents\OpenGL\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\20212692\Documents\Code Libraries\OpenGL\include;C:\Users\20212692\Documents\Code Libraries\glm;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\20212692\Documents\Code Libraries\OpenGL\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -158,6 +158,9 @@
     <Image Include="doghuhwhat.jpeg" />
   </ItemGroup>
   <ItemGroup>
+    <Object Include="dog.obj">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </Object>
     <Object Include="triangle1.obj">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </Object>

@@ -16,6 +16,7 @@ class ObjModelParser : public ModelFileParser {
         void parse(const char* objectPath);
         std::vector<float> getVertexData();
         std::vector<int> getIndices();
+        int getTextureSize();
 
     private:
         std::unordered_map<std::string, int> vertexMap;
@@ -24,6 +25,7 @@ class ObjModelParser : public ModelFileParser {
         std::vector<std::vector<float>> vertexNormals;
         std::vector<float> vertexData;
         std::vector<int> indices;
+        int textureSize;
 
         void parseLine(const std::string& str);
         void parseFace(const std::vector<std::string>& words);
@@ -45,6 +47,16 @@ class ObjModelParser : public ModelFileParser {
 
             return substrings;
         };
+
+        std::vector<std::string> splitOnWhiteSpaces(const std::string& str) {
+            std::istringstream iss(str);
+            std::vector<std::string> substrings;
+            std::string substring;
+            while (iss >> substring) {
+                substrings.push_back(substring);
+            }
+            return substrings;
+        }
 };
 
 #endif

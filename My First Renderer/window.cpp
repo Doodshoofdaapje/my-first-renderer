@@ -45,7 +45,7 @@ int main()
 
     // Setup objects
     Object origin("triangle1.obj", "doghuhwhat.jpeg", false, Transform{glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f)});
-    Object object0("triangle1.obj", "doghuhwhat.jpeg", true, Transform{ glm::vec3(-6.0f, 0.0f, 0.0f), glm::vec3(-55.0f, 45.0f, 0.0f), glm::vec3(1.0f)});
+    Object object0("dog.obj", "", false, Transform{ glm::vec3(-6.0f, 0.0f, 0.0f), glm::vec3(-90.0f, 0.0f, 0.0f), glm::vec3(0.3f)});
     Object object1("triangle1.obj", "doghuhwhat.jpeg", true, Transform{ glm::vec3(2.0f, 2.4f, -6.0f), glm::vec3(-15.0f, 75.0f, 0.0f), glm::vec3(1.0f) });
     Object object2("triangle1.obj", "doghuhwhat.jpeg", true, Transform{ glm::vec3(5.0f, 1.9f, -3.0f), glm::vec3(-55.0f, 25.0f, 0.0f), glm::vec3(1.0f) });
     Object object3("triangle1.obj", "doghuhwhat.jpeg", true, Transform{ glm::vec3(-1.3f, 4.4f, -2.0f), glm::vec3(-35.0f, 6.0f, 0.0f), glm::vec3(1.0f) });

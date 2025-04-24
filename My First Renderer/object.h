@@ -32,6 +32,9 @@ class Object {
         std::vector<float> vertexData; // Pos, Tex, Normal
         std::vector<int> indices;
 
+        int textureSize;
+        int vertexSize;
+
         // OpenGl Objects
         unsigned int VAO, EBO;
         const char* texturePath;

@@ -19,6 +19,9 @@ Object::Object(const char* objectPath, const char* texturePath, bool isTextured,
     vertexData = parser->getVertexData();
     indices = parser->getIndices();
 
+    textureSize = parser->getTextureSize();
+    vertexSize = 6 + textureSize;
+
     transform = trans;
     textured = isTextured;
 
@@ -47,15 +50,15 @@ void Object::bind() {
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(int), indices.data(), GL_STATIC_DRAW);
 
     // Specify position attribute
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, vertexSize * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
     // Specify texture attribute
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    glVertexAttribPointer(1, textureSize, GL_FLOAT, GL_FALSE, vertexSize * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
 
     // Specify vertex normal attribute
-    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, vertexSize * sizeof(float), (void*)(6 * sizeof(float)));
     glEnableVertexAttribArray(2);
 
     // Unbind buffer and array

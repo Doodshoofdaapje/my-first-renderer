@@ -92,5 +92,8 @@
     <Object Include="triangle2.obj">
       <Filter>Resource Files\objects</Filter>
     </Object>
+    <Object Include="dog.obj">
+      <Filter>Resource Files\objects</Filter>
+    </Object>
   </ItemGroup>
 </Project>

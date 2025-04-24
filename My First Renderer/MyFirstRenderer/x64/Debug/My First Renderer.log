@@ -1,2 +1,6 @@
-﻿  camera.cpp
+﻿  object.cpp
+C:\Users\20212692\Documents\Private\Projects\my-first-renderer\My First Renderer\object.cpp(82,46): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  window.cpp
+C:\Users\20212692\Documents\Private\Projects\my-first-renderer\My First Renderer\window.cpp(103,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
   My First Renderer.vcxproj -> C:\Users\20212692\Documents\Private\Projects\my-first-renderer\My First Renderer\x64\Debug\MyFirstRenderer.exe
