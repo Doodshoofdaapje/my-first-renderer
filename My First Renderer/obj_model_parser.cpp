@@ -1,4 +1,4 @@
-#include "ObjModelParser.h"
+#include "obj_model_parser.h"
 
 ObjModelParser::ObjModelParser() {
     // Temporary, TODO: Change to local variables to release data after parsing

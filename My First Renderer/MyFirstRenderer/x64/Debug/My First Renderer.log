@@ -1,6 +1,12 @@
-﻿  object.cpp
-C:\Users\20212692\Documents\Private\Projects\my-first-renderer\My First Renderer\object.cpp(82,46): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+﻿  camera.cpp
+  light_source.cpp
+  mesh_object.cpp
+C:\Users\20212692\Documents\Private\Projects\my-first-renderer\My First Renderer\mesh_object.cpp(85,46): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   window.cpp
-C:\Users\20212692\Documents\Private\Projects\my-first-renderer\My First Renderer\window.cpp(103,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\20212692\Documents\Private\Projects\my-first-renderer\My First Renderer\window.cpp(124,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\20212692\Documents\Private\Projects\my-first-renderer\My First Renderer\window.cpp(190,19): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Generating Code...
+glfw3.lib(monitor.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(monitor.obj)' or at ''; linking object as if no debug info
+glfw3.lib(null_monitor.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(null_monitor.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_joystick.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_joystick.obj)' or at ''; linking object as if no debug info
   My First Renderer.vcxproj -> C:\Users\20212692\Documents\Private\Projects\my-first-renderer\My First Renderer\x64\Debug\MyFirstRenderer.exe

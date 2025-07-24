@@ -13,9 +13,10 @@
 #include <gtc/type_ptr.hpp>
 #include <gtx/string_cast.hpp>
 
-#include "Transform.h"
+#include "object.h"
+#include "transform.h"
 
-class Camera {
+class Camera : public Object {
 	public:
 		Camera();
 		Camera(const Transform& trans, const glm::vec3& target);
@@ -23,11 +24,10 @@ class Camera {
 		glm::mat4 getViewMatrix();
 		glm::mat4 getProjectionMatrix();
 
-		void move(float forwardDisplacement, float sidewaysDisplacement, float deltaTime);
+		void move(float forwardDisplacement, float sidewaysDisplacement, float verticalDisplacement, float deltaTime);
 		void rotate(float forwardRotation, float sidewaysRotation, float deltaTime);
 
 	private:
-		Transform transform;
 		glm::vec3 camDirection;
 		glm::vec3 cameraRight;
 		glm::vec3 cameraUp;

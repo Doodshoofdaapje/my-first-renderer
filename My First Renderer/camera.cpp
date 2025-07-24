@@ -28,11 +28,12 @@ glm::mat4 Camera::getProjectionMatrix() {
 	return projection;
 }
 
-void Camera::move(float forwardDisplacement, float sidewaysDisplacement, float deltaTime) {
+void Camera::move(float forwardDisplacement, float sidewaysDisplacement, float verticalDisplacement, float deltaTime) {
 	float cameraSpeed = 10 * deltaTime;
 
 	transform.position += forwardDisplacement * camDirection * cameraSpeed;
 	transform.position -= sidewaysDisplacement * cameraRight * cameraSpeed;
+	transform.position += verticalDisplacement * cameraUp * cameraSpeed;
 }
 
 void Camera::rotate(float forwardRotation, float sidewaysRotation, float deltaTime) {

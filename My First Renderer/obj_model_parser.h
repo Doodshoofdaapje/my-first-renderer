@@ -8,7 +8,7 @@
 #include <string>
 #include <unordered_map>
 
-#include "ModelFileParser.h"
+#include "model_file_parser.h"
 
 class ObjModelParser : public ModelFileParser {
     public:

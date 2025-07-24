@@ -1,11 +1,12 @@
-#include "object.h"
+#include "mesh_object.h"
 
-Object::Object(const char* objectPath, const char* texturePath, bool isTextured, const Transform& trans) {
+MeshObject::MeshObject(const char* objectPath, const char* texturePath, bool isTextured, const Transform& trans) {
     // File management
     this->texturePath = texturePath;
     std::string path(objectPath);
     std::string fileExtention = path.substr(path.find_last_of("."));
 
+    // File parser factory
     if (fileExtention == ".obj") {
         parser = new ObjModelParser();
     }
@@ -16,14 +17,14 @@ Object::Object(const char* objectPath, const char* texturePath, bool isTextured,
 
     // Initialize class variables
     parser->parse(objectPath);
-    vertexData = parser->getVertexData();
-    indices = parser->getIndices();
+    this->vertexData = parser->getVertexData();
+    this->indices = parser->getIndices();
 
-    textureSize = parser->getTextureSize();
-    vertexSize = 6 + textureSize;
+    this->textureSize = parser->getTextureSize();
+    this->vertexSize = 6 + textureSize;
 
-    transform = trans;
-    textured = isTextured;
+    this->transform = trans;
+    this->textured = isTextured;
 
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &EBO);
@@ -31,7 +32,7 @@ Object::Object(const char* objectPath, const char* texturePath, bool isTextured,
     delete parser;
 }
 
-void Object::bind() {
+void MeshObject::bind() {
     // Bind to array
     glBindVertexArray(VAO);
 
@@ -66,8 +67,10 @@ void Object::bind() {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void Object::draw(Shader* shader) {
+void MeshObject::draw(Shader* shader) {
     glm::mat4 model = glm::mat4(1.0f);
+
+    // Transform Geometry view to World view
     model = glm::rotate(model, glm::radians(transform.rotation.x), glm::vec3(1.0f, 0.0f, 0.0f)); // Rotate around x
     model = glm::rotate(model, glm::radians(transform.rotation.y), glm::vec3(0.0f, 1.0f, 0.0f)); // Rotate around y
     model = glm::rotate(model, glm::radians(transform.rotation.z), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotate around z
@@ -83,13 +86,13 @@ void Object::draw(Shader* shader) {
     glBindVertexArray(0);
 }
 
-int Object::createTexture() {
-    // Setup texture
+int MeshObject::createTexture() {
+    // Setup and bind texture object
     unsigned int texture;
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
 
-    // Set the texture wrapping/filtering options (on the currently bound texture object)
+    // Set the texture wrapping/filtering options on the currently bound texture object
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
