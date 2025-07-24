@@ -3,5 +3,5 @@
 *.ipch
 .vs/
 MyFirstRenderer/.vs
-"My First Renderer/x64/"
-"My First Renderer/MyFirstRenderer/"
+/My First Renderer/x64/
+/My First Renderer/MyFirstRenderer/
