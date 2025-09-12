@@ -34,6 +34,12 @@
     <Filter Include="Source Files\Parsers">
       <UniqueIdentifier>{49bdfe7c-a847-43f6-aa8f-b4b94e7c10f8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{8e4f8084-afc3-4de3-82b2-4221bedbbab7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\components">
+      <UniqueIdentifier>{c733fca4-2299-4cac-815c-0212b4732cc8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="window.cpp">
@@ -48,17 +54,23 @@
     <ClCompile Include="camera.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="mesh_object.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="obj_model_parser.cpp">
       <Filter>Source Files\Parsers</Filter>
     </ClCompile>
     <ClCompile Include="shader.cpp">
       <Filter>Source Files\shaders</Filter>
     </ClCompile>
-    <ClCompile Include="light_source.cpp">
+    <ClCompile Include="object.cpp">
       <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="light_source.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="mesh_renderer.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="transform.cpp">
+      <Filter>Source Files\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -74,20 +86,26 @@
     <ClInclude Include="obj_model_parser.h">
       <Filter>Header Files\Parsers</Filter>
     </ClInclude>
-    <ClInclude Include="transform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mesh_object.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="object.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="light_source.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="camera.h">
       <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="particle.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="component.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="light_source.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="mesh_renderer.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="transform.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

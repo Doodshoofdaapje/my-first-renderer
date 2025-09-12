@@ -1,7 +1,6 @@
 #include "light_source.h"
 
 LightSource::LightSource() {
-	this->transform = Transform{ glm::vec3(5.0f, 5.0f, 5.0f), glm::vec3(0.0f, -90.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f) };
 	this->color = glm::vec3(1.0f);
 
 	this->ambient = glm::vec4(0.1f, 0.5f, 0.1f, 1.0f);
@@ -13,16 +12,13 @@ LightSource::LightSource() {
 	this->kQuadratic = 1.8f;
 }
 
-LightSource::LightSource(const Transform& trans,
-						 const glm::vec3& color,
+LightSource::LightSource(const glm::vec3& color,
 						 const glm::vec4& ambient,
 					 	 const glm::vec4& diffuse,
 					  	 const glm::vec4& specular,
 						 const float kConstant,
 						 const float kLinear,
 						 const float kQuadratic) {
-	this->transform = trans;
-
 	this->color = color;
 	this->ambient = ambient;
 	this->diffuse = diffuse;

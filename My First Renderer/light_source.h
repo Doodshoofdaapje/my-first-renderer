@@ -10,11 +10,10 @@
 #include "object.h"
 #include "transform.h"
 
-class LightSource : public Object {
+class LightSource : public Component {
 public:
     LightSource();
-    LightSource(const Transform& trans, 
-                const glm::vec3& color, 
+    LightSource(const glm::vec3& color, 
                 const glm::vec4& ambient, 
                 const glm::vec4& diffuse, 
                 const glm::vec4& specular,

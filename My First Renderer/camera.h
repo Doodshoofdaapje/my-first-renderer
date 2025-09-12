@@ -19,7 +19,8 @@
 class Camera : public Object {
 	public:
 		Camera();
-		Camera(const Transform& trans, const glm::vec3& target);
+		Camera(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale);
+		Camera(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, const glm::vec3& target);
 
 		glm::mat4 getViewMatrix();
 		glm::mat4 getProjectionMatrix();

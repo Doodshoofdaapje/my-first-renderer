@@ -1,6 +1,6 @@
-#include "mesh_object.h"
+#include "mesh_renderer.h"
 
-MeshObject::MeshObject(const char* objectPath, const char* texturePath, bool isTextured, const Transform& trans) {
+MeshRenderer::MeshRenderer(const char* objectPath, const char* texturePath, bool isTextured) {
     // File management
     this->texturePath = texturePath;
     std::string path(objectPath);
@@ -23,7 +23,6 @@ MeshObject::MeshObject(const char* objectPath, const char* texturePath, bool isT
     this->textureSize = parser->getTextureSize();
     this->vertexSize = 6 + textureSize;
 
-    this->transform = trans;
     this->textured = isTextured;
 
     glGenVertexArrays(1, &VAO);
@@ -32,7 +31,7 @@ MeshObject::MeshObject(const char* objectPath, const char* texturePath, bool isT
     delete parser;
 }
 
-void MeshObject::bind() {
+void MeshRenderer::bind() {
     // Bind to array
     glBindVertexArray(VAO);
 
@@ -67,15 +66,15 @@ void MeshObject::bind() {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void MeshObject::draw(Shader* shader) {
+void MeshRenderer::draw(Shader* shader, Transform* transform) {
     glm::mat4 model = glm::mat4(1.0f);
 
     // Transform Geometry view to World view
-    model = glm::rotate(model, glm::radians(transform.rotation.x), glm::vec3(1.0f, 0.0f, 0.0f)); // Rotate around x
-    model = glm::rotate(model, glm::radians(transform.rotation.y), glm::vec3(0.0f, 1.0f, 0.0f)); // Rotate around y
-    model = glm::rotate(model, glm::radians(transform.rotation.z), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotate around z
-    model = glm::translate(model, transform.position);
-    model = glm::scale(model, transform.scale);
+    model = glm::rotate(model, glm::radians(transform->rotation.x), glm::vec3(1.0f, 0.0f, 0.0f)); // Rotate around x
+    model = glm::rotate(model, glm::radians(transform->rotation.y), glm::vec3(0.0f, 1.0f, 0.0f)); // Rotate around y
+    model = glm::rotate(model, glm::radians(transform->rotation.z), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotate around z
+    model = glm::translate(model, transform->position);
+    model = glm::scale(model, transform->scale);
 
     shader->setBool("textured", textured);
     shader->setMatrix4fv("model", model);
@@ -86,7 +85,7 @@ void MeshObject::draw(Shader* shader) {
     glBindVertexArray(0);
 }
 
-int MeshObject::createTexture() {
+int MeshRenderer::createTexture() {
     // Setup and bind texture object
     unsigned int texture;
     glGenTextures(1, &texture);

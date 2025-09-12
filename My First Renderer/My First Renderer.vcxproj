@@ -136,19 +136,23 @@
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="light_source.cpp" />
-    <ClCompile Include="mesh_object.cpp" />
+    <ClCompile Include="mesh_renderer.cpp" />
+    <ClCompile Include="object.cpp" />
     <ClCompile Include="obj_model_parser.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="stb_image.cpp" />
+    <ClCompile Include="transform.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
+    <ClInclude Include="component.h" />
     <ClInclude Include="light_source.h" />
+    <ClInclude Include="mesh_renderer.h" />
     <ClInclude Include="model_file_parser.h" />
-    <ClInclude Include="mesh_object.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="obj_model_parser.h" />
+    <ClInclude Include="particle.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="transform.h" />

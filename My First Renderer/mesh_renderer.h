@@ -1,5 +1,5 @@
-#ifndef MESH_OBJECT_H
-#define MESH_OBJECT_H
+#ifndef MESH_RENDERER_H
+#define MESH_RENDERER_H
 
 #include <glad/glad.h> // include glad to get all the required OpenGL headers
 
@@ -20,12 +20,12 @@
 #include "transform.h"
 #include "object.h"
 
-class MeshObject : public Object{
+class MeshRenderer : public Component{
     public:
-        MeshObject(const char* objectPath, const char* texturePath, bool isTextured, const Transform& trans);
+        MeshRenderer(const char* objectPath, const char* texturePath, bool isTextured);
 
         void bind();
-        void draw(Shader* shader);
+        void draw(Shader* shader, Transform* transform);
 
     private:
         // Model data

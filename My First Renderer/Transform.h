@@ -5,10 +5,19 @@
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>
 
-struct Transform {
-    glm::vec3 position;
-    glm::vec3 rotation;
-    glm::vec3 scale;
+#include "component.h"
+
+class Transform : public Component {
+
+    public:
+        Transform();
+        Transform(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale);
+
+        void move(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale);
+
+        glm::vec3 position;
+        glm::vec3 rotation;
+        glm::vec3 scale;
 };
 
 #endif

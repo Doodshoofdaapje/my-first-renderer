@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "shader.h"
-#include "mesh_object.h"
+#include "mesh_renderer.h"
 #include "camera.h"
 #include "light_source.h"
 
@@ -15,18 +15,20 @@ const char* WINDOW_TITLE = "MyFirstRenderer";
 // Function definitions, TODO: Cleanup into header file
 GLFWwindow* createWindow();
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void setupObjects();
+void setupMeshObjects();
 void renderLoop(GLFWwindow* window, Shader& shader);
 void processInput(GLFWwindow* window);
-void setLights(Shader& shader, std::vector<LightSource>& lights);
+void setupLights(Shader& shader, std::vector<Object*> lights);
+
+template<typename T>
+std::vector<Object*> objectsWith();
 
 // Scene variables
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
 
 // Scene objects
-std::vector<MeshObject> objects;
-std::vector<LightSource> lights;
+std::vector<Object*> objects;
 Camera camera;
 
 int main()
@@ -49,35 +51,29 @@ int main()
     Shader myShader("shader.vert", "shader.frag");
 
     // Setup Camera
-    camera = Camera(Transform{ glm::vec3(0.0f, 8.0f, 15.0f), glm::vec3(0.0f, -90.0f, 0.0f), glm::vec3(1.0f) }, glm::vec3(0.0f, 8.0f, 0.0f));
-
-    // Setup Light
-    LightSource light = LightSource(Transform{ glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f) }, glm::vec3(1.0f),
-                        glm::vec4(0.1f, 0.5f, 0.1f, 1.0f), glm::vec4(0.5f, 0.5f, 0.0f, 1.0f), glm::vec4(1.0f, 1.0f, 1.0f, 0.0f), 1.0f, 0.35f, 0.44f);
-    LightSource light2 = LightSource(Transform{ glm::vec3(-15.0f, 15.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f) }, glm::vec3(1.0f),
-        glm::vec4(0.1f, 0.5f, 0.1f, 1.0f), glm::vec4(0.5f, 0.5f, 0.0f, 1.0f), glm::vec4(1.0f, 1.0f, 1.0f, 0.0f), 1.0f, 0.35f, 0.44f);
-
-    lights.push_back(light);
-    lights.push_back(light2);
+    camera = Camera(glm::vec3(0.0f, 8.0f, 15.0f), glm::vec3(0.0f, -90.0f, 0.0f), glm::vec3(1.0f), glm::vec3(0.0f, 8.0f, 0.0f));
 
     // Setup objects
-    MeshObject origin("triangle1.obj", "doghuhwhat.jpeg", false, Transform{glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f)}); // Light source object for debugging
-    MeshObject lightPos("triangle1.obj", "doghuhwhat.jpeg", false, Transform{ glm::vec3(-15.0f, 15.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f) }); // Light source object for debugging
+    Object origin(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f));
+    origin.addComponent<MeshRenderer>("triangle1.obj", "doghuhwhat.jpeg", false);
 
-    MeshObject object0("dog.obj", "", false, Transform{ glm::vec3(-10.0f, 0.0f, 0.0f), glm::vec3(-90.0f, 0.0f, 0.0f), glm::vec3(0.3f)});
-    MeshObject object1("triangle1.obj", "doghuhwhat.jpeg", false, Transform{ glm::vec3(10.0f, 10.0f, 10.0f), glm::vec3(-15.0f, 75.0f, 0.0f), glm::vec3(5.0f) });
-    MeshObject object2("triangle1.obj", "doghuhwhat.jpeg", true, Transform{ glm::vec3(5.0f, 1.9f, -3.0f), glm::vec3(-55.0f, 25.0f, 0.0f), glm::vec3(1.0f) });
-    MeshObject object3("triangle1.obj", "doghuhwhat.jpeg", true, Transform{ glm::vec3(-1.3f, 4.4f, -2.0f), glm::vec3(-35.0f, 6.0f, 0.0f), glm::vec3(1.0f) });
-    MeshObject object4("triangle1.obj", "doghuhwhat.jpeg", true, Transform{ glm::vec3(-2.2f, 1.2f, -1.0f), glm::vec3(-25.0f, 15.0f, 0.0f), glm::vec3(1.0f) });
+    Object dog(glm::vec3(-10.0f, 0.0f, 0.0f), glm::vec3(-90.0f, 0.0f, 0.0f), glm::vec3(0.3f));
+    dog.addComponent<MeshRenderer>("dog.obj", "", false);
 
-    objects.push_back(origin);
-    objects.push_back(lightPos);
-    objects.push_back(object0);
-    objects.push_back(object1);
-    objects.push_back(object2);
-    objects.push_back(object3);
-    objects.push_back(object4);
-    setupObjects();
+    Object light1(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+    light1.addComponent<MeshRenderer>("triangle1.obj", "doghuhwhat.jpeg", false);
+    light1.addComponent<LightSource>(glm::vec3(1.0f), glm::vec4(0.1f, 0.5f, 0.1f, 1.0f), glm::vec4(0.5f, 0.5f, 0.0f, 1.0f), glm::vec4(1.0f, 1.0f, 1.0f, 0.0f), 1.0f, 0.35f, 0.44f);
+
+    Object light2(glm::vec3(-15.0f, 15.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+    light2.addComponent<MeshRenderer>("triangle1.obj", "doghuhwhat.jpeg", false);
+    light2.addComponent<LightSource>(glm::vec3(1.0f), glm::vec4(0.1f, 0.5f, 0.1f, 1.0f), glm::vec4(0.5f, 0.5f, 0.0f, 1.0f), glm::vec4(1.0f, 1.0f, 1.0f, 0.0f), 1.0f, 0.35f, 0.44f);
+
+    objects.push_back(&origin);
+    objects.push_back(&dog);
+    objects.push_back(&light1);
+    objects.push_back(&light2);
+
+    setupMeshObjects();
 
     // Start rendering
     renderLoop(window, myShader);
@@ -111,11 +107,15 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     glViewport(0, 0, width, height);
 }
 
-void setupObjects() {
-    // Generate VAOs for each object in the scene
-    for (size_t i = 0; i < objects.size(); i++) {
-        objects[i].bind();
+template<typename T>
+std::vector<Object*> objectsWith() {
+    std::vector<Object*> result;
+    for (auto object : objects) {
+        if (object->hasComponent<T>()) {
+            result.push_back(object);
+        }
     }
+    return result;
 }
 
 void renderLoop(GLFWwindow* window, Shader& shader) {
@@ -138,13 +138,14 @@ void renderLoop(GLFWwindow* window, Shader& shader) {
         shader.setMatrix4fv("view", camera.getViewMatrix());
         shader.setMatrix4fv("projection", camera.getProjectionMatrix());
         shader.setFloat("time", currentFrame);
-        shader.setVec3("viewPos", camera.getPosition());
-        setLights(shader, lights);
+        shader.setVec3("viewPos", (*camera.getComponent<Transform>()).position);
+        setupLights(shader, objectsWith<LightSource>());
         shader.use();
 
         // Draw objects
-        for (size_t i = 0; i < objects.size(); i++) {
-            objects[i].draw(&shader);
+        for (auto object : objectsWith<MeshRenderer>()) {
+            MeshRenderer* renderer = object->getComponent<MeshRenderer>();
+            renderer->draw(&shader, (object->getComponent<Transform>()));
         }
         
         // Check events
@@ -186,22 +187,33 @@ void processInput(GLFWwindow* window)
         camera.rotate(0.0f, 1.0f, deltaTime);
 }
 
-void setLights(Shader& shader, std::vector<LightSource>& lights) {
+void setupMeshObjects() {
+    // Generate VAOs for each object in the scene
+    for (auto object : objectsWith<MeshRenderer>()) {
+        MeshRenderer* renderer = object->getComponent<MeshRenderer>();
+        renderer->bind();
+    }
+}
+
+void setupLights(Shader& shader, std::vector<Object*> lights) {
     int numLights = lights.size();
     shader.setInt("numLights", numLights);
 
     for (int i = 0; i < numLights; ++i) {
         std::string index = "lights[" + std::to_string(i) + "]";
 
-        shader.setVec3(index + ".position", lights[i].getPosition());
+        Object* light = lights[i];
+        LightSource* lightComponent = lights[i]->getComponent<LightSource>();
 
-        shader.setVec3(index + ".color", lights[i].getColor());
-        shader.setVec4(index + ".ambient", lights[i].getAmbient());
-        shader.setVec4(index + ".diffuse", lights[i].getDiffuse());
-        shader.setVec4(index + ".specular", lights[i].getSpecular());
+        shader.setVec3(index + ".position", light->getComponent<Transform>()->position);
 
-        shader.setFloat(index + ".kConstant", lights[i].getKConstant());
-        shader.setFloat(index + ".kLinear", lights[i].getKLinear());
-        shader.setFloat(index + ".KQuadratic", lights[i].getKQuadratic());
+        shader.setVec3(index + ".color", lightComponent->getColor());
+        shader.setVec4(index + ".ambient", lightComponent->getAmbient());
+        shader.setVec4(index + ".diffuse", lightComponent->getDiffuse());
+        shader.setVec4(index + ".specular", lightComponent->getSpecular());
+
+        shader.setFloat(index + ".kConstant", lightComponent->getKConstant());
+        shader.setFloat(index + ".kLinear", lightComponent->getKLinear());
+        shader.setFloat(index + ".KQuadratic", lightComponent->getKQuadratic());
     }
 }
