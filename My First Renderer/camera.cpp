@@ -43,15 +43,15 @@ void Camera::move(float forwardDisplacement, float sidewaysDisplacement, float v
 	transform->position += verticalDisplacement * cameraUp * cameraSpeed;
 }
 
-void Camera::rotate(float forwardRotation, float sidewaysRotation, float deltaTime) {
-	float rotationSpeed = 100 * deltaTime;
+void Camera::rotate(float forwardRotation, float sidewaysRotation) {
+	float sensitivity = 0.1f;
 
 	Transform* transform = getComponent<Transform>();
 	glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
 	glm::vec3 direction;
 
-	transform->rotation.x += forwardRotation * rotationSpeed;
-	transform->rotation.y += sidewaysRotation * rotationSpeed;
+	transform->rotation.x += forwardRotation * sensitivity;
+	transform->rotation.y += sidewaysRotation * sensitivity;
 
 	// Recalculate camera properties
 	direction.x = cos(glm::radians(transform->rotation.y)) * cos(glm::radians(transform->rotation.x));

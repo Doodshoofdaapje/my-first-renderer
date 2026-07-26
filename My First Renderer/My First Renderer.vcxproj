@@ -136,6 +136,7 @@
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="light_source.cpp" />
+    <ClCompile Include="material.h" />
     <ClCompile Include="mesh_renderer.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="obj_model_parser.cpp" />
@@ -166,6 +167,9 @@
   </ItemGroup>
   <ItemGroup>
     <Object Include="dog.obj">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </Object>
+    <Object Include="ground.obj">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </Object>
     <Object Include="triangle1.obj">

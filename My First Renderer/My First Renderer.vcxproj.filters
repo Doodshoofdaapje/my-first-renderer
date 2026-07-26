@@ -72,6 +72,9 @@
     <ClCompile Include="transform.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="material.h">
+      <Filter>Header Files\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.h">
@@ -129,6 +132,9 @@
       <Filter>Resource Files\objects</Filter>
     </Object>
     <Object Include="dog.obj">
+      <Filter>Resource Files\objects</Filter>
+    </Object>
+    <Object Include="ground.obj">
       <Filter>Resource Files\objects</Filter>
     </Object>
   </ItemGroup>

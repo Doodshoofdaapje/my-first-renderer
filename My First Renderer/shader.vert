@@ -10,15 +10,13 @@ uniform mat4 view;
 uniform mat4 projection;
 
 out vec2 TexCoord;
-out vec3 Normal;
 out vec3 P;
 out vec3 N;
 
 void main()
 {
 	mat4 ModelViewProjectMatrix = projection * view * model;
-	mat4 ModelViewMatrix = view * model;
-	mat3 NormalMatrix = transpose(inverse(mat3(ModelViewMatrix)));
+	mat3 NormalMatrix = transpose(inverse(mat3(model)));
 
 	gl_Position = ModelViewProjectMatrix * vec4(aPos, 1.0); // Position in eye space
 	
@@ -26,5 +24,4 @@ void main()
 	N = NormalMatrix * aNormal;
 
 	TexCoord = aTexCoord;
-	Normal = aNormal;
 };

@@ -14,7 +14,8 @@ const char* WINDOW_TITLE = "MyFirstRenderer";
 
 // Function definitions, TODO: Cleanup into header file
 GLFWwindow* createWindow();
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void framebufferSizeCallback(GLFWwindow* window, int width, int height);
+void mouseCallback(GLFWwindow* window, double xpos, double ypos);
 void setupMeshObjects();
 void renderLoop(GLFWwindow* window, Shader& shader);
 void processInput(GLFWwindow* window);
@@ -26,6 +27,10 @@ std::vector<Object*> objectsWith();
 // Scene variables
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
+
+float mouseX = 400.0f;
+float mouseY = 300.0f;
+bool firstMouse = true;
 
 // Scene objects
 std::vector<Object*> objects;
@@ -45,7 +50,11 @@ int main()
     // Resize event handlr
     glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
     glEnable(GL_DEPTH_TEST);
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
+    // Callbacks
+    glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
+    glfwSetCursorPosCallback(window, mouseCallback);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); // Hide and lock cursor
     
     // Setup shaders
     Shader myShader("shader.vert", "shader.frag");
@@ -54,21 +63,25 @@ int main()
     camera = Camera(glm::vec3(0.0f, 8.0f, 15.0f), glm::vec3(0.0f, -90.0f, 0.0f), glm::vec3(1.0f), glm::vec3(0.0f, 8.0f, 0.0f));
 
     // Setup objects
-    Object origin(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f));
-    origin.addComponent<MeshRenderer>("triangle1.obj", "doghuhwhat.jpeg", false);
+    Object origin(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.5f));
+    origin.addComponent<MeshRenderer>("triangle1.obj")->setTexture(true, "doghuhwhat.jpeg");
+
+    Object ground(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f));
+    ground.addComponent<MeshRenderer>("ground.obj");
 
     Object dog(glm::vec3(-10.0f, 0.0f, 0.0f), glm::vec3(-90.0f, 0.0f, 0.0f), glm::vec3(0.3f));
-    dog.addComponent<MeshRenderer>("dog.obj", "", false);
+    dog.addComponent<MeshRenderer>("dog.obj")->setMaterial(128, glm::vec4(0.2, 0.0f, 0.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f), glm::vec4(1.0f));
 
-    Object light1(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
-    light1.addComponent<MeshRenderer>("triangle1.obj", "doghuhwhat.jpeg", false);
-    light1.addComponent<LightSource>(glm::vec3(1.0f), glm::vec4(0.1f, 0.5f, 0.1f, 1.0f), glm::vec4(0.5f, 0.5f, 0.0f, 1.0f), glm::vec4(1.0f, 1.0f, 1.0f, 0.0f), 1.0f, 0.35f, 0.44f);
+    Object light1(glm::vec3(0.0f, 5.0f, 10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f));
+    light1.addComponent<MeshRenderer>("triangle1.obj");
+    light1.addComponent<LightSource>(glm::vec4(0.4f, 0.4f, 0.4f, 1.0f), glm::vec4(0.6f, 0.6f, 0.6f, 1.0f), glm::vec4(0.3f, 0.3f, 0.3f, 1.0f), 1.0f, 0.09f, 0.032f);
 
-    Object light2(glm::vec3(-15.0f, 15.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
-    light2.addComponent<MeshRenderer>("triangle1.obj", "doghuhwhat.jpeg", false);
-    light2.addComponent<LightSource>(glm::vec3(1.0f), glm::vec4(0.1f, 0.5f, 0.1f, 1.0f), glm::vec4(0.5f, 0.5f, 0.0f, 1.0f), glm::vec4(1.0f, 1.0f, 1.0f, 0.0f), 1.0f, 0.35f, 0.44f);
+    Object light2(glm::vec3(-15.0f, 10.0f, -10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+    light2.addComponent<MeshRenderer>("triangle1.obj");
+    light2.addComponent<LightSource>(glm::vec4(0.8f, 0.8f, 0.8f, 1.0f), glm::vec4(1.0f), glm::vec4(1.0f), 1.0f, 0.35f, 0.44f);
 
     objects.push_back(&origin);
+    objects.push_back(&ground);
     objects.push_back(&dog);
     objects.push_back(&light1);
     objects.push_back(&light2);
@@ -102,9 +115,46 @@ GLFWwindow* createWindow() {
     return window;
 }
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
-{
+void framebufferSizeCallback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
+}
+
+void mouseCallback(GLFWwindow* window, double xpos, double ypos) {
+    if (firstMouse) {
+        mouseX = (float)xpos;
+        mouseY = (float)ypos;
+        firstMouse = false;
+    }
+
+    float xoffset = (float)xpos - mouseX;
+    float yoffset = mouseY - (float)ypos;
+
+    mouseX = (float)xpos;
+    mouseY = (float)ypos;
+
+    camera.rotate(yoffset, xoffset);
+}
+
+void processInput(GLFWwindow* window)
+{
+
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
+
+    // Movement
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+        camera.move(1.0f, 0.0f, 0.0f, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+        camera.move(-1.0f, 0.0f, 0.0f, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+        camera.move(0.0f, -1.0f, 0.0f, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+        camera.move(0.0f, 1.0f, 0.0f, deltaTime);
+
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+        camera.move(0.0f, 0.0f, 1.0f, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
+        camera.move(0.0f, 0.0f, -1.0f, deltaTime);
 }
 
 template<typename T>
@@ -155,43 +205,11 @@ void renderLoop(GLFWwindow* window, Shader& shader) {
     glfwTerminate();
 }
 
-void processInput(GLFWwindow* window)
-{
-
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
-
-    // Movement
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        camera.move(1.0f, 0.0f, 0.0f, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        camera.move(-1.0f, 0.0f, 0.0f, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        camera.move(0.0f, -1.0f, 0.0f, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        camera.move(0.0f, 1.0f, 0.0f, deltaTime);
-
-    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
-        camera.move(0.0f, 0.0f, 1.0f, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
-        camera.move(0.0f, 0.0f, -1.0f, deltaTime);
-
-    // Rotation
-    if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
-        camera.rotate(1.0f, 0.0f, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
-        camera.rotate(-1.0f, 0.0f, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
-        camera.rotate(0.0f, -1.0f, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
-        camera.rotate(0.0f, 1.0f, deltaTime);
-}
-
 void setupMeshObjects() {
     // Generate VAOs for each object in the scene
     for (auto object : objectsWith<MeshRenderer>()) {
         MeshRenderer* renderer = object->getComponent<MeshRenderer>();
-        renderer->bind();
+        renderer->setup();
     }
 }
 
@@ -207,7 +225,6 @@ void setupLights(Shader& shader, std::vector<Object*> lights) {
 
         shader.setVec3(index + ".position", light->getComponent<Transform>()->position);
 
-        shader.setVec3(index + ".color", lightComponent->getColor());
         shader.setVec4(index + ".ambient", lightComponent->getAmbient());
         shader.setVec4(index + ".diffuse", lightComponent->getDiffuse());
         shader.setVec4(index + ".specular", lightComponent->getSpecular());

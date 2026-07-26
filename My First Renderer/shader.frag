@@ -15,7 +15,6 @@ uniform int numLights;
 
 struct Light {
     vec3 position;
-    vec3 color;
 
     vec4 ambient;
     vec4 diffuse;
@@ -32,7 +31,8 @@ struct Material {
    vec4 diffuse;
    vec4 specular;
    float shininess;
-} material;
+};
+uniform Material material;
 
 out vec4 FragColor;
  
@@ -48,24 +48,21 @@ vec4 shading(vec3 P, vec3 N, Light light, Material mat)
     vec3 reflectedLightDir = reflect(-lightDir, normal);
     vec3 viewDir = normalize(viewPos - P);
     
-    float diff = cosAngle(normal, lightDir);
-    float spec = pow(cosAngle(viewDir, reflectedLightDir), material.shininess);
-
-    vec4 diffuseLight = mat.diffuse * light.diffuse * diff;
-    vec4 specularLight = mat.specular * light.specular * spec;
-    vec4 ambientLight = mat.ambient * light.ambient;
+    float diff = cosAngle(lightDir, normal);
+    float spec = pow(cosAngle(reflectedLightDir, viewDir), mat.shininess);
     
-	vec4 totalLight = vec4(0);
-    totalLight += diffuseLight;
-    totalLight += specularLight;
-    totalLight += ambientLight;
-
-    float distanceToLight = length(light.position - P);
-    float attenuation = 1.0 / (light.kConstant + light.kLinear * distanceToLight + light.kQuadratic * (distanceToLight * distanceToLight)); 
+    vec3 ambientLight = mat.ambient.rgb * light.ambient.rgb;
+    vec3 diffuseLight = mat.diffuse.rgb * diff * light.diffuse.rgb;
+    vec3 specularLight = mat.specular.rgb * spec * light.specular.rgb;
     
-	vec4 result  = totalLight * attenuation;
+	vec3 totalLight = ambientLight + diffuseLight + specularLight;
 
-	return result;
+     float distanceToLight = length(light.position - P);
+     float attenuation = 1.0 / (light.kConstant + light.kLinear * distanceToLight + light.kQuadratic * (distanceToLight * distanceToLight)); 
+    
+	vec3 result  = totalLight * attenuation;
+
+	return vec4(result, mat.ambient.a);
 }
 
 vec4 totalShading(vec3 P, vec3 N, Material mat) {
@@ -80,16 +77,10 @@ vec4 totalShading(vec3 P, vec3 N, Material mat) {
 
 void main()
 {
-    material.shininess = 1;
-    material.ambient=vec4(0.1);
-    material.diffuse=vec4(0.7);
-    material.specular=vec4(0.4);
-
     vec4 baseColor = vec4(1.0);  // default color
     if (textured) {
         baseColor = texture(ourTexture, TexCoord);
     }
-
-    FragColor = totalShading(P, N, material) * baseColor;
     
+    FragColor = vec4(totalShading(P,N,material).rgb * baseColor.rgb, baseColor.a);
 };

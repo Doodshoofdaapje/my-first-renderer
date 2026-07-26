@@ -26,7 +26,7 @@ class Camera : public Object {
 		glm::mat4 getProjectionMatrix();
 
 		void move(float forwardDisplacement, float sidewaysDisplacement, float verticalDisplacement, float deltaTime);
-		void rotate(float forwardRotation, float sidewaysRotation, float deltaTime);
+		void rotate(float forwardRotation, float sidewaysRotation);
 
 	private:
 		glm::vec3 camDirection;

@@ -19,13 +19,16 @@
 #include "shader.h"
 #include "transform.h"
 #include "object.h"
+#include "material.h"
 
 class MeshRenderer : public Component{
     public:
-        MeshRenderer(const char* objectPath, const char* texturePath, bool isTextured);
+        MeshRenderer(const char* objectPath);
 
-        void bind();
+        void setup();
         void draw(Shader* shader, Transform* transform);
+        MeshRenderer* setTexture(bool isTextured, const char* texturePath);
+        MeshRenderer* setMaterial(float shininess, glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular);
 
     private:
         // Model data
@@ -33,18 +36,23 @@ class MeshRenderer : public Component{
         std::vector<float> vertexData; // Pos, Tex, Normal
         std::vector<int> indices;
 
+        // Texture data
+        const char* texturePath;
         int textureSize;
         int vertexSize;
 
+        // Material data
+        Material material;
+
         // OpenGl Objects
+        unsigned int textureID;
         unsigned int VAO, EBO;
-        const char* texturePath;
 
         // Properties
         bool textured;
 
         // Auxilaury methods
-        int createTexture();
+        int createTexture(const char* texturePath);
 };
 
 #endif

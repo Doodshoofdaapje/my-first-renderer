@@ -74,10 +74,10 @@ void ObjModelParser::parseLine(const std::string& str) {
     }
 }
 
-void ObjModelParser::parseFace(const std::vector<std::string>& words) {
-    for (size_t i = 0; i < words.size(); ++i) {
+void ObjModelParser::parseFace(const std::vector<std::string>& points) {
+    for (size_t i = 0; i < points.size(); ++i) {
         // Vertex exists
-        std::string vertex = words[i];
+        std::string vertex = points[i];
         if (vertexMap.find(vertex) != vertexMap.end()) {
             indices.push_back(vertexMap[vertex]);
             continue;
