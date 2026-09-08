@@ -13,7 +13,8 @@ class Transform : public Component {
         Transform();
         Transform(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale);
 
-        void move(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale);
+        void translate(glm::vec3 position);
+        void setPosition(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale);
 
         glm::vec3 position;
         glm::vec3 rotation;

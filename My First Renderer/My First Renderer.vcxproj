@@ -135,12 +135,19 @@
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="glad.c" />
+    <ClCompile Include="gravity.cpp" />
     <ClCompile Include="light_source.cpp" />
     <ClCompile Include="material.h" />
     <ClCompile Include="mesh_renderer.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="obj_model_parser.cpp" />
+    <ClCompile Include="physics_engine.cpp" />
+    <ClCompile Include="render_engine.cpp" />
+    <ClCompile Include="rigid_body.cpp" />
     <ClCompile Include="shader.cpp" />
+    <ClCompile Include="solver_euler.cpp" />
+    <ClCompile Include="solver_runge_kutta_4.cpp" />
+    <ClCompile Include="spring.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="transform.cpp" />
     <ClCompile Include="window.cpp" />
@@ -148,13 +155,22 @@
   <ItemGroup>
     <ClInclude Include="camera.h" />
     <ClInclude Include="component.h" />
+    <ClInclude Include="force.h" />
+    <ClInclude Include="gravity.h" />
     <ClInclude Include="light_source.h" />
     <ClInclude Include="mesh_renderer.h" />
     <ClInclude Include="model_file_parser.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="obj_model_parser.h" />
     <ClInclude Include="particle.h" />
+    <ClInclude Include="physics_engine.h" />
+    <ClInclude Include="render_engine.h" />
+    <ClInclude Include="rigid_body.h" />
     <ClInclude Include="shader.h" />
+    <ClInclude Include="solver.h" />
+    <ClInclude Include="solver_euler.h" />
+    <ClInclude Include="solver_runge_kutta_4.h" />
+    <ClInclude Include="spring.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="transform.h" />
   </ItemGroup>

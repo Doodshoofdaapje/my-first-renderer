@@ -13,7 +13,11 @@ Transform::Transform(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale) {
 	this->scale = scale;
 }
 
-void Transform::move(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale) {
+void Transform::translate(glm::vec3 position) {
+	this->position += position;
+}
+
+void Transform::setPosition(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale) {
 	this->position = position;
 	this->rotation = rotation;
 	this->scale = scale;

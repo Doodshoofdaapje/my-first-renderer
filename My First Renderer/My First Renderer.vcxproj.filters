@@ -1,141 +1,207 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
+    <Filter Include="source Files">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="source Files\shaders">
+      <UniqueIdentifier>{abf6b3d3-51a1-4cbb-bb71-3a6a21ee4919}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
+    <Filter Include="source Files\parsers">
+      <UniqueIdentifier>{49bdfe7c-a847-43f6-aa8f-b4b94e7c10f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source Files\components">
+      <UniqueIdentifier>{c733fca4-2299-4cac-815c-0212b4732cc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source Files\physics">
+      <UniqueIdentifier>{f5bd121e-282b-4b4e-8140-c92aec71a42b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\shaders">
-      <UniqueIdentifier>{abf6b3d3-51a1-4cbb-bb71-3a6a21ee4919}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\objects">
+    <Filter Include="resource Files\objects">
       <UniqueIdentifier>{668b8ef5-ce86-4ee6-a105-17a63e3b2c92}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\assets">
+    <Filter Include="resource Files\assets">
       <UniqueIdentifier>{1e72147d-fa6a-48df-9ef6-1efc8dd46b0d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Parsers">
-      <UniqueIdentifier>{924cc0a9-ec81-49a0-af6d-1625717beeb4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Objects">
-      <UniqueIdentifier>{87ee7f00-0d0e-4349-ba52-2e993b4f116f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Objects">
+    <Filter Include="source Files\objects">
       <UniqueIdentifier>{d07b290e-249a-488e-bca3-2f230dac05f2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Parsers">
-      <UniqueIdentifier>{49bdfe7c-a847-43f6-aa8f-b4b94e7c10f8}</UniqueIdentifier>
+    <Filter Include="header files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Header Files\Components">
+    <Filter Include="header files\parsers">
+      <UniqueIdentifier>{924cc0a9-ec81-49a0-af6d-1625717beeb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header files\objects">
+      <UniqueIdentifier>{87ee7f00-0d0e-4349-ba52-2e993b4f116f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header files\components">
       <UniqueIdentifier>{8e4f8084-afc3-4de3-82b2-4221bedbbab7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\components">
-      <UniqueIdentifier>{c733fca4-2299-4cac-815c-0212b4732cc8}</UniqueIdentifier>
+    <Filter Include="header files\physics">
+      <UniqueIdentifier>{79d477a2-0fba-463c-965d-91b5fe8c5ab1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header files\physics\forces">
+      <UniqueIdentifier>{06510cdb-c798-4402-945f-35db5b4ec29e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header files\physics\solvers">
+      <UniqueIdentifier>{3bef9d8e-5eae-46e4-9d30-3f9a3830a6a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source Files\physics\forces">
+      <UniqueIdentifier>{9c91305e-4e2b-4e89-9742-da76df3fc8c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source Files\physics\solvers">
+      <UniqueIdentifier>{1c9075c6-0de4-4cd7-977a-8f139a8436a1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="window.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>source Files</Filter>
     </ClCompile>
     <ClCompile Include="glad.c">
-      <Filter>Source Files</Filter>
+      <Filter>source Files</Filter>
     </ClCompile>
     <ClCompile Include="stb_image.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>source Files</Filter>
     </ClCompile>
     <ClCompile Include="camera.cpp">
-      <Filter>Source Files\Objects</Filter>
+      <Filter>source Files\objects</Filter>
     </ClCompile>
     <ClCompile Include="obj_model_parser.cpp">
-      <Filter>Source Files\Parsers</Filter>
+      <Filter>source Files\parsers</Filter>
     </ClCompile>
     <ClCompile Include="shader.cpp">
-      <Filter>Source Files\shaders</Filter>
+      <Filter>source Files\shaders</Filter>
     </ClCompile>
     <ClCompile Include="object.cpp">
-      <Filter>Source Files\Objects</Filter>
+      <Filter>source Files\objects</Filter>
     </ClCompile>
     <ClCompile Include="light_source.cpp">
-      <Filter>Source Files\components</Filter>
+      <Filter>source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="mesh_renderer.cpp">
-      <Filter>Source Files\components</Filter>
+      <Filter>source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="transform.cpp">
-      <Filter>Source Files\components</Filter>
+      <Filter>source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="material.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>header files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="rigid_body.cpp">
+      <Filter>source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="physics_engine.cpp">
+      <Filter>source Files\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="solver_runge_kutta_4.cpp">
+      <Filter>source Files\physics\solvers</Filter>
+    </ClCompile>
+    <ClCompile Include="solver_euler.cpp">
+      <Filter>source Files\physics\solvers</Filter>
+    </ClCompile>
+    <ClCompile Include="gravity.cpp">
+      <Filter>source Files\physics\forces</Filter>
+    </ClCompile>
+    <ClCompile Include="spring.cpp">
+      <Filter>source Files\physics\forces</Filter>
+    </ClCompile>
+    <ClCompile Include="render_engine.cpp">
+      <Filter>source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.h">
-      <Filter>Header Files</Filter>
+      <Filter>header files</Filter>
     </ClInclude>
     <ClInclude Include="stb_image.h">
-      <Filter>Header Files</Filter>
+      <Filter>header files</Filter>
     </ClInclude>
     <ClInclude Include="model_file_parser.h">
-      <Filter>Header Files\Parsers</Filter>
+      <Filter>header files\parsers</Filter>
     </ClInclude>
     <ClInclude Include="obj_model_parser.h">
-      <Filter>Header Files\Parsers</Filter>
+      <Filter>header files\parsers</Filter>
     </ClInclude>
     <ClInclude Include="object.h">
-      <Filter>Header Files\Objects</Filter>
+      <Filter>header files\objects</Filter>
     </ClInclude>
     <ClInclude Include="camera.h">
-      <Filter>Header Files\Objects</Filter>
+      <Filter>header files\objects</Filter>
     </ClInclude>
     <ClInclude Include="particle.h">
-      <Filter>Header Files\Objects</Filter>
+      <Filter>header files\objects</Filter>
     </ClInclude>
     <ClInclude Include="component.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>header files\components</Filter>
     </ClInclude>
     <ClInclude Include="light_source.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>header files\components</Filter>
     </ClInclude>
     <ClInclude Include="mesh_renderer.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>header files\components</Filter>
     </ClInclude>
     <ClInclude Include="transform.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>header files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="physics_engine.h">
+      <Filter>header files\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="solver_runge_kutta_4.h">
+      <Filter>header files\physics\solvers</Filter>
+    </ClInclude>
+    <ClInclude Include="solver.h">
+      <Filter>header files\physics\solvers</Filter>
+    </ClInclude>
+    <ClInclude Include="rigid_body.h">
+      <Filter>header files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="force.h">
+      <Filter>header files\physics\forces</Filter>
+    </ClInclude>
+    <ClInclude Include="solver_euler.h">
+      <Filter>header files\physics\solvers</Filter>
+    </ClInclude>
+    <ClInclude Include="gravity.h">
+      <Filter>header files\physics\forces</Filter>
+    </ClInclude>
+    <ClInclude Include="spring.h">
+      <Filter>header files\physics\forces</Filter>
+    </ClInclude>
+    <ClInclude Include="render_engine.h">
+      <Filter>header files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="shader.frag">
-      <Filter>Source Files\shaders</Filter>
+      <Filter>source Files\shaders</Filter>
     </None>
     <None Include="shader.vert">
-      <Filter>Source Files\shaders</Filter>
+      <Filter>source Files\shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="doghuhwhat.jpeg">
-      <Filter>Resource Files\assets</Filter>
+      <Filter>resource Files\assets</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
     <Object Include="triangle1.obj">
-      <Filter>Resource Files\objects</Filter>
+      <Filter>resource Files\objects</Filter>
     </Object>
     <Object Include="triangle2.obj">
-      <Filter>Resource Files\objects</Filter>
+      <Filter>resource Files\objects</Filter>
     </Object>
     <Object Include="dog.obj">
-      <Filter>Resource Files\objects</Filter>
+      <Filter>resource Files\objects</Filter>
     </Object>
     <Object Include="ground.obj">
-      <Filter>Resource Files\objects</Filter>
+      <Filter>resource Files\objects</Filter>
     </Object>
   </ItemGroup>
 </Project>

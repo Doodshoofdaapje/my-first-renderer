@@ -23,6 +23,15 @@
 
 class Object {
 public:
+    // Delete copying 
+    Object(const Object&) = delete;
+    Object& operator=(const Object&) = delete;
+
+    // Define moving
+    Object(Object&&) = default;
+    Object& operator=(Object&&) = default;
+
+    // Constructors
     Object();
     Object(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale);
 
