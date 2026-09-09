@@ -10,6 +10,7 @@ void Gravity::apply() {
 	rb->force -= glm::vec3{ 0, rb->mass * gravity, 0 };
 }
 
-void Gravity::draw() {
-
+std::vector<glm::vec3> Gravity::getDebugVector() {
+	Transform* tr1 = object->getComponent<Transform>();
+	return { tr1->position, tr1->position - glm::vec3{0, gravity / 5, 0} };
 }

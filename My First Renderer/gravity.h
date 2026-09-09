@@ -9,7 +9,7 @@ public:
 	Gravity(Object* object, float gravity);
 
 	void apply();
-	void draw();
+	std::vector<glm::vec3> getDebugVector();
 
 private:
 	Object* object;

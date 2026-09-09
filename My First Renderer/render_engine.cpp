@@ -18,6 +18,11 @@ void RenderEngine::setLights(const std::vector<Object*> lights) {
 }
 void RenderEngine::setForces(const std::vector<Force*> forces) {
     this->forces = forces;
+
+    // Create render object for each force
+    for (auto force : forces) {
+        forcesDebugRenderers.push_back(ForceDebugRenderer());
+    }
 }
 
 void RenderEngine::updateLights() {
@@ -50,8 +55,19 @@ void RenderEngine::drawMeshObjects() {
 }
 
 void RenderEngine::drawForces() {
-    for (auto force : forces) {
-        force->draw();
+    for (int i = 0; i < forces.size(); i++) {
+        std::vector<glm::vec3> debugData = forces[i]->getDebugVector();
+        ForceDebugRenderer& debugRenderer = forcesDebugRenderers[i];
+
+        // Load force's data into buffer
+        glBindBuffer(GL_ARRAY_BUFFER, debugRenderer.VBO);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, debugData.size() * sizeof(glm::vec3), debugData.data());
+
+        // Select force's VAO to use for interpertation
+        glBindVertexArray(debugRenderer.VAO);
+
+        glDrawArrays(GL_LINES, 0, 2);
+        glBindVertexArray(0);
     }
 }
 

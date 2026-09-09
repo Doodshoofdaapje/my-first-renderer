@@ -134,6 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="force_debug_renderer.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="gravity.cpp" />
     <ClCompile Include="light_source.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="camera.h" />
     <ClInclude Include="component.h" />
     <ClInclude Include="force.h" />
+    <ClInclude Include="force_debug_renderer.h" />
     <ClInclude Include="gravity.h" />
     <ClInclude Include="light_source.h" />
     <ClInclude Include="mesh_renderer.h" />

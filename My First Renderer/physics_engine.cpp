@@ -17,7 +17,7 @@ void PhysicsEngine::registerObject(Object* object) {
 
 	RigidBody* rb = object->getComponent<RigidBody>();
 	if (rb->useGravity) {
-		forces.push_back(std::make_unique<Gravity>(object, 0.5f));
+		forces.push_back(std::make_unique<Gravity>(object, 9.81f));
 	}
 
 	objects.push_back(object);

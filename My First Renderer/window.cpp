@@ -83,12 +83,12 @@ int main()
     light1->addComponent<LightSource>(glm::vec4(0.4f, 0.4f, 0.4f, 1.0f), glm::vec4(0.6f, 0.6f, 0.6f, 1.0f), glm::vec4(0.3f, 0.3f, 0.3f, 1.0f), 1.0f, 0.09f, 0.032f);
     light1->addComponent<RigidBody>(1.0f, true, true);
 
-    std::unique_ptr<Object> light2 = std::make_unique<Object>(glm::vec3(-15.0f, 30.0f, -10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+    std::unique_ptr<Object> light2 = std::make_unique<Object>(glm::vec3(-5.0f, 10.0f, -10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
     light2->addComponent<MeshRenderer>("triangle1.obj");
     light2->addComponent<LightSource>(glm::vec4(0.8f, 0.8f, 0.8f, 1.0f), glm::vec4(1.0f), glm::vec4(1.0f), 1.0f, 0.35f, 0.44f);
     light2->addComponent<RigidBody>(1.0f, true, false);
 
-    physicsEngine.registerForce(std::make_unique<Spring>(*light1, *light2, 0.1, 0.15, 0.015));
+    physicsEngine.registerForce(std::make_unique<Spring>(*light1, *light2, 0.1, 10.0, 0.5));
 
     objects.push_back(std::move(origin));
     objects.push_back(std::move(ground));
@@ -96,13 +96,13 @@ int main()
     objects.push_back(std::move(light1));
     objects.push_back(std::move(light2));
 
-    renderEngine->setMeshObjects(objectsWith<MeshRenderer>());
-    renderEngine->setLights(objectsWith<LightSource>());
-    renderEngine->setForces(physicsEngine.getForces());
-
     for (auto object : objectsWith<RigidBody>()) {
         physicsEngine.registerObject(object);
     }
+
+    renderEngine->setMeshObjects(objectsWith<MeshRenderer>());
+    renderEngine->setLights(objectsWith<LightSource>());
+    renderEngine->setForces(physicsEngine.getForces());
 
     // Start rendering
     simulationLoop(window);

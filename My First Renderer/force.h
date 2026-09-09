@@ -4,15 +4,13 @@
 #include "object.h"
 #include "rigid_body.h"
 
-#include <glad/glad.h> // include glad to get all the required OpenGL headers
-
 #pragma once
 
 class Force {
 public:
 	virtual ~Force() = default;
 	virtual void apply() = 0;
-	virtual void draw() = 0;
+	virtual std::vector<glm::vec3> getDebugVector() = 0;
 };
 
 #endif

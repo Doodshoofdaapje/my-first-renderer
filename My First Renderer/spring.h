@@ -11,17 +11,13 @@ public:
 	Spring(Object& obj1, Object& obj2, double dist, double ks, double kd);
 
 	void apply();
-	void draw();
+	std::vector<glm::vec3> getDebugVector();
 
 private:
 	Object& obj1;   // particle 1
 	Object& obj2;   // particle 2 
 	double dist;     // rest length
 	double ks, kd; // spring strength constants
-
-	// Render objects
-	unsigned int VAO;
-	unsigned int VBO;
 };
 
 #endif

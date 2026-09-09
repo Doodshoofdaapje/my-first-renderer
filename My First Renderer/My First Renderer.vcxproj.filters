@@ -5,9 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="source Files\shaders">
-      <UniqueIdentifier>{abf6b3d3-51a1-4cbb-bb71-3a6a21ee4919}</UniqueIdentifier>
-    </Filter>
     <Filter Include="source Files\parsers">
       <UniqueIdentifier>{49bdfe7c-a847-43f6-aa8f-b4b94e7c10f8}</UniqueIdentifier>
     </Filter>
@@ -58,6 +55,15 @@
     <Filter Include="source Files\physics\solvers">
       <UniqueIdentifier>{1c9075c6-0de4-4cd7-977a-8f139a8436a1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source Files\rendering">
+      <UniqueIdentifier>{d5c4a40c-a6c1-4128-8a0b-1893b5480bc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source Files\rendering\shaders">
+      <UniqueIdentifier>{abf6b3d3-51a1-4cbb-bb71-3a6a21ee4919}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header files\rendering">
+      <UniqueIdentifier>{cb0cc29e-830b-45dd-a0dc-31fa536ef6d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="window.cpp">
@@ -76,7 +82,7 @@
       <Filter>source Files\parsers</Filter>
     </ClCompile>
     <ClCompile Include="shader.cpp">
-      <Filter>source Files\shaders</Filter>
+      <Filter>source Files\rendering\shaders</Filter>
     </ClCompile>
     <ClCompile Include="object.cpp">
       <Filter>source Files\objects</Filter>
@@ -112,13 +118,13 @@
       <Filter>source Files\physics\forces</Filter>
     </ClCompile>
     <ClCompile Include="render_engine.cpp">
-      <Filter>source Files</Filter>
+      <Filter>source Files\rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="force_debug_renderer.cpp">
+      <Filter>source Files\rendering</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="shader.h">
-      <Filter>header files</Filter>
-    </ClInclude>
     <ClInclude Include="stb_image.h">
       <Filter>header files</Filter>
     </ClInclude>
@@ -174,15 +180,21 @@
       <Filter>header files\physics\forces</Filter>
     </ClInclude>
     <ClInclude Include="render_engine.h">
-      <Filter>header files</Filter>
+      <Filter>header files\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="shader.h">
+      <Filter>header files\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="force_debug_renderer.h">
+      <Filter>header files\rendering</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="shader.frag">
-      <Filter>source Files\shaders</Filter>
+      <Filter>source Files\rendering\shaders</Filter>
     </None>
     <None Include="shader.vert">
-      <Filter>source Files\shaders</Filter>
+      <Filter>source Files\rendering\shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
